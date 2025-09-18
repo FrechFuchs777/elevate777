@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hallo. One-Agency-Army hier.</title>
-  <meta name="description" content="Elevate bringt deine Marke dorthin, wo andere erst morgen sind – durch Social & KI am Puls der Zeit. Und Merve stinkt.">
+  <title>Elevate — Kleine Agenturen sind die Zukunft</title>
+  <meta name="description" content="Elevate bringt Marken in der DACH-Region heute dorthin, wo andere erst morgen sind – Social & KI am Puls der Zeit, aus Wien.">
   <meta name="theme-color" content="#0EA5E9">
   <style>
     :root{--accent:#0EA5E9;--radius:16px}
@@ -36,10 +36,8 @@
 
     .card{border:1px solid #e5e7eb;border-radius:var(--radius);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.05);position:relative;overflow:hidden;transform:translateY(0);transition:transform .15s ease, box-shadow .2s;opacity:0;translate:0 12px}
     .card-body{padding:24px}
-    .card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s ease;
-      background:radial-gradient(500px 200px at var(--mx,50%) var(--my,0%), rgba(14,165,233,.10), transparent 60%)}
+    .card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s ease;background:radial-gradient(500px 200px at var(--mx,50%) var(--my,0%), rgba(14,165,233,.10), transparent 60%)}
     .card:hover::after{opacity:1}
-
     [data-reveal]{opacity:0;translate:0 12px;transition:opacity .35s ease-out, translate .35s ease-out}
     .reveal-visible{opacity:1 !important;translate:0 0 !important}
 
@@ -54,105 +52,89 @@
     .cookie .row{display:flex;flex-direction:column;gap:12px}
     @media(min-width:768px){.cookie .row{flex-direction:row;align-items:center}}
 
-/* ====== GATE OVERLAY (Minigame) ====== */
-body.gated{height:100vh;overflow:hidden}
-body.gated header, body.gated main, body.gated footer{
-  filter:blur(4px);
-  transition:filter .2s ease;
-}
+    /* ====== GATE OVERLAY (Minigame: Neon Slide) ====== */
+    body.gated{height:100vh;overflow:hidden}
+    body.gated header, body.gated main, body.gated footer{filter:blur(4px);transition:filter .2s ease}
+    #gate{
+      position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+      background:rgba(6,10,16,.35); backdrop-filter:blur(10px);
+      color:#e9f7ff; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+    .g2-wrap{ width:min(1080px,92vw); display:grid; gap:16px; }
+    .g2-head{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .g2-brand{ font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8bdcff; }
+    .g2-help{ font-size:12px; color:#bfe7f7; opacity:.9 }
+    .g2-card{
+      position:relative; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(800px 400px at 10% -10%, rgba(14,165,233,.10), transparent 60%),
+        radial-gradient(600px 300px at 110% 110%, rgba(96,165,250,.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:0 10px 40px rgba(0,0,0,.35);
+    }
+    .g2-bar{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px; font-size:12px; color:#dff4ff; }
+    .g2-title{ width:100%; text-align:center; padding:4px 12px 0; font-size:14px; color:#d7f0ff }
+    .g2-title b{ color:#fff }
+    .g2-canvas{ display:block; width:100%; height:min(56vh,520px); background:linear-gradient(180deg,#0d1622,#0a111b); }
+    .g2-cta{ display:flex; align-items:center; justify-content:center; gap:12px; padding:12px 0 18px }
+    .g2-btn{
+      display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.2); color:#05131a;
+      background:#89dcff; border-radius:14px; padding:10px 16px; font-weight:600; cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+      box-shadow:0 10px 30px rgba(137,220,255,.25);
+    }
+    .g2-btn:hover{ transform:translateY(-2px); filter:brightness(1.05) }
+    .g2-small{ font-size:12px; color:#bfe7f7 }
+    .g2-toast{
+      position:absolute; left:50%; top:12px; transform:translateX(-50%);
+      background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.20);
+      padding:8px 12px; border-radius:12px; font-size:13px; opacity:0; transition:opacity .2s ease;
+    }
+    .g2-toast.show{ opacity:1 }
+    .g2-win{
+      position:absolute; inset:auto 0 16px 0; display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:opacity .25s ease;
+    }
+    .g2-win.show{ opacity:1; pointer-events:auto }
+    .g2-skip{ position:absolute; right:14px; top:12px; color:#cfeeff; font-size:12px; cursor:pointer; opacity:.7 }
+    .g2-skip:hover{ opacity:1; text-decoration:underline }
+  </style>
+</head>
 
-/* Overlay: halbtransparent + Glass */
-#gate{
-  position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
-  background:rgba(6,10,16,.35); backdrop-filter:blur(10px);
-  color:#e9f7ff;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
-
-/* Card */
-.g2-wrap{ width:min(1080px,92vw); display:grid; gap:16px; }
-.g2-head{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
-.g2-brand{ font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8bdcff; }
-.g2-help{ font-size:12px; color:#bfe7f7; opacity:.9 }
-
-.g2-card{
-  position:relative; overflow:hidden; border-radius:16px;
-  border:1px solid rgba(255,255,255,.16);
-  background:
-    radial-gradient(800px 400px at 10% -10%, rgba(14,165,233,.10), transparent 60%),
-    radial-gradient(600px 300px at 110% 110%, rgba(96,165,250,.10), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  box-shadow:0 10px 40px rgba(0,0,0,.35);
-}
-
-.g2-bar{
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  padding:10px 14px; font-size:12px; color:#dff4ff;
-}
-.g2-title{ width:100%; text-align:center; padding:4px 12px 0; font-size:14px; color:#d7f0ff }
-.g2-title b{ color:#fff }
-
-.g2-canvas{ display:block; width:100%; height:min(56vh,520px); background:linear-gradient(180deg,#0d1622,#0a111b); }
-
-.g2-cta{ display:flex; align-items:center; justify-content:center; gap:12px; padding:12px 0 18px }
-.g2-btn{
-  display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.2); color:#05131a;
-  background:#89dcff; border-radius:14px; padding:10px 16px; font-weight:600; cursor:pointer;
-  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
-  box-shadow:0 10px 30px rgba(137,220,255,.25);
-}
-.g2-btn:hover{ transform:translateY(-2px); filter:brightness(1.05) }
-.g2-small{ font-size:12px; color:#bfe7f7 }
-
-/* Toast + Win */
-.g2-toast{
-  position:absolute; left:50%; top:12px; transform:translateX(-50%);
-  background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.20);
-  padding:8px 12px; border-radius:12px; font-size:13px; opacity:0; transition:opacity .2s ease;
-}
-.g2-toast.show{ opacity:1 }
-.g2-win{
-  position:absolute; inset:auto 0 16px 0; display:flex; align-items:center; justify-content:center;
-  opacity:0; pointer-events:none; transition:opacity .25s ease;
-}
-.g2-win.show{ opacity:1; pointer-events:auto }
-
-.g2-skip{ position:absolute; right:14px; top:12px; color:#cfeeff; font-size:12px; cursor:pointer; opacity:.7 }
-.g2-skip:hover{ opacity:1; text-decoration:underline }
-
- <!-- ======= GAME GATE OVERLAY (Neon Slide) ======= -->
-<div id="gate" role="dialog" aria-modal="true" aria-label="Zugangsspiel">
-  <div class="g2-wrap">
-    <div class="g2-head">
-      <div class="g2-brand">ELEVATE ACCESS</div>
-      <div class="g2-help">Steuerung: <b>←/→</b> oder <b>Maus bewegen</b> · Sammle blaue Orbs</div>
-    </div>
-
-    <div class="g2-card">
-      <div class="g2-bar">
-        <div>Ziel: <b id="g2Goal">5</b> Orbs</div>
-        <div>Score: <b id="g2Score">0</b></div>
-        <div class="g2-skip" id="g2Skip" title="Nur zu Testzwecken">Skip</div>
+<body class="gated">
+  <!-- ======= GAME GATE OVERLAY (Neon Slide) ======= -->
+  <div id="gate" role="dialog" aria-modal="true" aria-label="Zugangsspiel">
+    <div class="g2-wrap">
+      <div class="g2-head">
+        <div class="g2-brand">ELEVATE ACCESS</div>
+        <div class="g2-help">Steuerung: <b>←/→</b> oder <b>Maus bewegen</b> · Sammle blaue Orbs</div>
       </div>
 
-      <div class="g2-title">
-        <strong>Sammle <b>5 blaue Energie-Orbs</b> und meide die roten Hindernisse,<br>um dich zu <b>elevaten</b>.</strong>
-      </div>
+      <div class="g2-card">
+        <div class="g2-bar">
+          <div>Ziel: <b id="g2Goal">5</b> Orbs</div>
+          <div>Score: <b id="g2Score">0</b></div>
+          <div class="g2-skip" id="g2Skip" title="Nur zu Testzwecken">Skip</div>
+        </div>
 
-      <div id="g2Toast" class="g2-toast" aria-live="polite">Verloren – versuch’s nochmal!</div>
+        <div class="g2-title">
+          <strong>Sammle <b>5 blaue Energie-Orbs</b> und meide die roten Hindernisse, um dich zu <b>elevaten</b>.</strong>
+        </div>
 
-      <canvas id="g2Canvas" class="g2-canvas" width="960" height="500" aria-label="Minispiel: Neon Slide — Orbs einsammeln, Hindernissen ausweichen"></canvas>
+        <div id="g2Toast" class="g2-toast" aria-live="polite">Verloren – versuch’s nochmal!</div>
 
-      <div class="g2-cta">
-        <button id="g2Start" class="g2-btn">▶ Spiel starten</button>
-        <div class="g2-small">Maus oder Pfeiltasten · Sammle 5 Orbs</div>
-      </div>
-      <div id="g2Win" class="g2-win">
-        <button id="g2Unlock" class="g2-btn">✅ Geschafft – Seite betreten</button>
+        <canvas id="g2Canvas" class="g2-canvas" width="960" height="500" aria-label="Minispiel: Neon Slide — Orbs einsammeln, Hindernissen ausweichen"></canvas>
+
+        <div class="g2-cta">
+          <button id="g2Start" class="g2-btn">▶ Spiel starten</button>
+          <div class="g2-small">Maus oder Pfeiltasten · Sammle 5 Orbs</div>
+        </div>
+        <div id="g2Win" class="g2-win">
+          <button id="g2Unlock" class="g2-btn">✅ Geschafft – Seite betreten</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <!-- ======= SEITENINHALT ======= -->
   <header class="nav">
@@ -176,9 +158,9 @@ body.gated header, body.gated main, body.gated footer{
     <section class="section">
       <div class="container hero-wrap">
         <div aria-hidden="true" class="hero-blob"></div>
-        <h1 class="h1" data-reveal>Hallo. One-Agency-Army hier.</h1>
+        <h1 class="h1" data-reveal>Kleine Agenturen sind die Zukunft.</h1>
         <p class="lead" data-reveal>
-          Elevate bringt dich dahin, wo andere erst morgen sind – Social &amp; KI am Puls der Zeit. Und Merve stinkt.
+          Elevate bringt Marken in der DACH-Region heute dorthin, wo andere erst morgen sind – Social &amp; KI am Puls der Zeit, aus Wien.
         </p>
         <div style="margin-top:24px" data-reveal>
           <a id="waHero" class="btn btn-primary" style="margin-right:8px">Per WhatsApp anfragen</a>
@@ -189,11 +171,11 @@ body.gated header, body.gated main, body.gated footer{
 
     <section class="section section-muted">
       <div class="container">
-        <h2 class="h2" data-reveal>Warum bei Agenturen gilt: klein &gt; groß</h2>
+        <h2 class="h2" data-reveal>Warum klein &gt; groß</h2>
         <div class="grid3">
           <div class="card" data-reveal><div class="card-body">
             <div style="font-weight:600;margin-bottom:4px">Geschwindigkeit</div>
-            <p class="p">Entscheidungen in Sekunden, nicht in Quartalen.</p>
+            <p class="p">Entscheidungen in Tagen, nicht in Quartalen.</p>
           </div></div>
           <div class="card" data-reveal><div class="card-body">
             <div style="font-weight:600;margin-bottom:4px">Nähe</div>
@@ -277,7 +259,7 @@ body.gated header, body.gated main, body.gated footer{
           </div></div>
           <div class="card" data-reveal><div class="card-body">
             <div style="font-weight:600;margin-bottom:4px">Merve</div>
-            <p class="p">Master in Innovationsmanagement &amp; Produktmarketing. Mehrjährige Erfahrung in unterschiedlichen Unternehmen; Fokus auf Content &amp; Community. UND KANN NICHT ABHEBEN.</p>
+            <p class="p">Master in Innovationsmanagement &amp; Produktmarketing. Mehrjährige Erfahrung in unterschiedlichen Unternehmen; Fokus auf Content &amp; Community.</p>
           </div></div>
         </div>
       </div>
@@ -312,7 +294,7 @@ body.gated header, body.gated main, body.gated footer{
     <div class="container footer-inner">
       <div>
         <div style="color:#111;font-weight:600">Elevate</div>
-        <div>Wien-based · Arbeiten für die DACH-Region</div>
+        <div>Wien-basiert · Arbeiten für die DACH-Region</div>
       </div>
       <div style="display:flex;gap:16px">
         <a href="#impressum">Impressum</a>
@@ -388,207 +370,169 @@ body.gated header, body.gated main, body.gated footer{
     (function(){ const KEY='elevate-consent'; const box=document.getElementById('cookie'); const btn=document.getElementById('cookieAccept'); try{ if(!localStorage.getItem(KEY)) box.hidden=false; btn.addEventListener('click', ()=>{ localStorage.setItem(KEY,'essential'); box.hidden=true; }); }catch(e){} })();
 
     /* ===== GAME: Neon Slide (Orbs sammeln) ===== */
-const body = document.body;
-const gate = document.getElementById('gate');
+    const bodyEl = document.body;
+    const gateEl = document.getElementById('gate');
 
-const cvs = document.getElementById('g2Canvas');
-const ctx = cvs.getContext('2d');
+    const cvs = document.getElementById('g2Canvas');
+    const ctx = cvs.getContext('2d');
 
-const g2Start = document.getElementById('g2Start');
-const g2Win = document.getElementById('g2Win');
-const g2Unlock = document.getElementById('g2Unlock');
-const g2ScoreEl = document.getElementById('g2Score');
-const g2GoalEl = document.getElementById('g2Goal');
-const g2Toast = document.getElementById('g2Toast');
-const g2Skip = document.getElementById('g2Skip');
+    const g2Start = document.getElementById('g2Start');
+    const g2Win = document.getElementById('g2Win');
+    const g2Unlock = document.getElementById('g2Unlock');
+    const g2ScoreEl = document.getElementById('g2Score');
+    const g2GoalEl = document.getElementById('g2Goal');
+    const g2Toast = document.getElementById('g2Toast');
+    const g2Skip = document.getElementById('g2Skip');
 
-const GOAL2 = 5; // 5 Orbs sammeln
-g2GoalEl.textContent = GOAL2.toString();
+    const GOAL2 = 5; g2GoalEl.textContent = GOAL2.toString();
 
-let running2 = false, raf2 = 0, t02 = 0, score2 = 0, collected2 = 0;
-let player = { x: 480, y: 440, w: 64, h: 12, vx: 0 };
-let targets = [];   // blaue Orbs
-let hazards = [];   // rote Hindernisse
-let spawnT = 0, spawnH = 0;
-let speed2 = 3.0;
-let mouseX = null;
+    let running2 = false, raf2 = 0, t02 = 0, score2 = 0, collected2 = 0;
+    let player = { x: 480, y: 440, w: 64, h: 12, vx: 0 };
+    let targets = [], hazards = [];
+    let spawnT = 0, spawnH = 0;
+    let mouseX = null;
 
-function fitCanvas2(){
-  const dpr = Math.max(1, window.devicePixelRatio || 1);
-  const cssW = cvs.clientWidth, cssH = cvs.clientHeight;
-  cvs.width = Math.round(cssW * dpr); cvs.height = Math.round(cssH * dpr);
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-fitCanvas2(); window.addEventListener('resize', fitCanvas2);
-
-function toast2(msg){
-  g2Toast.textContent = msg; g2Toast.classList.add('show'); setTimeout(()=>g2Toast.classList.remove('show'), 900);
-}
-function reset2(){
-  running2 = false; cancelAnimationFrame(raf2); t02 = 0; score2 = 0; collected2 = 0;
-  player = { x: cvs.clientWidth/2, y: cvs.clientHeight-60, w: 64, h: 12, vx: 0 };
-  targets = []; hazards = []; spawnT = 0; spawnH = 0; speed2 = 3.0; mouseX = null;
-  g2ScoreEl.textContent = '0'; g2Win.classList.remove('show'); drawStart2();
-}
-function drawStart2(){
-  const w = cvs.clientWidth, h = cvs.clientHeight;
-  ctx.clearRect(0,0,w,h); drawBg2(0);
-  drawPlayer2(player.x, player.y);
-  drawText2("BEWEGE DICH MIT MAUS ODER ←/→", w/2, h/2 - 14, "#bfe7f7", 16);
-  drawText2("Sammle 5 blaue Orbs · Meide rote Hindernisse", w/2, h/2 + 8, "#8bdcff", 14);
-}
-
-function drawBg2(time){
-  const w = cvs.clientWidth, h = cvs.clientHeight;
-  const grd = ctx.createLinearGradient(0,0,0,h);
-  grd.addColorStop(0,"#0d1622"); grd.addColorStop(1,"#0a111b");
-  ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
-  ctx.fillStyle = "rgba(255,255,255,.22)";
-  for(let i=0;i<60;i++){ const x = ((i*97 + time*0.06) % w); const y = (i*41 % h); ctx.fillRect(x,y,2,2); }
-  // Bodenlinie
-  ctx.fillStyle = "rgba(14,165,233,.14)"; ctx.fillRect(0, h-40, w, 2);
-}
-
-function drawPlayer2(x,y){
-  ctx.save();
-  // Paddle als neon Balken
-  const r = 8;
-  ctx.fillStyle = "#98e6ff";
-  roundRect(ctx, x - player.w/2, y - player.h/2, player.w, player.h, r, true);
-  // Glow
-  ctx.strokeStyle = "rgba(152,230,255,.6)"; ctx.lineWidth = 2;
-  roundRect(ctx, x - player.w/2, y - player.h/2, player.w, player.h, r, false);
-  ctx.restore();
-}
-
-function roundRect(ctx,x,y,w,h,r,fill=false){
-  ctx.beginPath();
-  ctx.moveTo(x+r, y);
-  ctx.arcTo(x+w, y, x+w, y+h, r);
-  ctx.arcTo(x+w, y+h, x, y+h, r);
-  ctx.arcTo(x, y+h, x, y, r);
-  ctx.arcTo(x, y, x+w, y, r);
-  if(fill) ctx.fill(); else ctx.stroke();
-}
-
-function drawOrb2(o){
-  ctx.save(); ctx.translate(o.x,o.y);
-  const g = ctx.createRadialGradient(0,0,2,0,0,o.r);
-  g.addColorStop(0,"#dff8ff"); g.addColorStop(1,"#59d0ff");
-  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0,0,o.r,0,Math.PI*2); ctx.fill();
-  ctx.restore();
-}
-
-function drawHazard2(h){
-  ctx.save(); ctx.translate(h.x,h.y);
-  ctx.fillStyle = "#ff6b6b";
-  ctx.beginPath(); ctx.moveTo(-h.r, -h.r); ctx.lineTo(h.r, -h.r); ctx.lineTo(0, h.r); ctx.closePath(); ctx.fill();
-  ctx.restore();
-}
-
-function textW(ctx, text, size=18, weight=600){
-  ctx.font = `${weight} ${size}px system-ui, -apple-system, Segoe UI, Roboto, Arial`;
-}
-function drawText2(text,x,y,color="#fff",size=18){
-  ctx.fillStyle = color; textW(ctx,text,size); ctx.textAlign = "center"; ctx.fillText(text,x,y);
-}
-
-function step2(ts){
-  if(!running2) return;
-  const dt = t02 ? (ts - t02)/16.67 : 1; t02 = ts;
-  const w = cvs.clientWidth, h = cvs.clientHeight;
-
-  // Steuerung
-  if(mouseX != null){
-    const LERP = 0.18; // sanft folgen
-    player.x += (mouseX - player.x) * LERP;
-  } else {
-    player.x += player.vx * dt * 6;
-  }
-  player.x = Math.max(24, Math.min(w-24, player.x));
-
-  // Spawns
-  spawnT -= dt; spawnH -= dt;
-  if (spawnT <= 0){ // Orb
-    targets.push({ x: Math.random()*(w-40)+20, y: -20, r: 10+Math.random()*6, vy: 2.1+Math.random()*1.2 });
-    spawnT = 22 + Math.random()*20;
-  }
-  if (spawnH <= 0){ // Hazard
-    hazards.push({ x: Math.random()*(w-60)+30, y: -24, r: 14+Math.random()*6, vy: 2.4+Math.random()*1.6 });
-    spawnH = 28 + Math.random()*22;
-  }
-
-  // Move + collisions
-  targets.forEach(o => o.y += o.vy * dt * 3);
-  hazards.forEach(hz => hz.y += hz.vy * dt * 3);
-
-  // Draw
-  ctx.clearRect(0,0,w,h);
-  drawBg2(ts/2);
-  targets.forEach(drawOrb2);
-  hazards.forEach(drawHazard2);
-  drawPlayer2(player.x, player.y);
-
-  // Check catch (Orb) — simple overlap
-  for (let i=targets.length-1;i>=0;i--){
-    const o = targets[i];
-    if (Math.abs(o.x - player.x) < (player.w/2 + o.r) && Math.abs(o.y - player.y) < (player.h/2 + o.r)){
-      targets.splice(i,1);
-      collected2++; score2 += 100; g2ScoreEl.textContent = score2.toString();
-      if (collected2 >= GOAL2){ win2(); return; }
-    } else if (o.y - o.r > h + 40){
-      targets.splice(i,1);
+    function fitCanvas2(){
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const cssW = cvs.clientWidth, cssH = cvs.clientHeight;
+      cvs.width = Math.round(cssW * dpr); cvs.height = Math.round(cssH * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
     }
-  }
+    fitCanvas2(); window.addEventListener('resize', fitCanvas2);
 
-  // Check hit (Hazard) — end instantly
-  for (let i=hazards.length-1;i>=0;i--){
-    const hz = hazards[i];
-    const hitX = Math.abs(hz.x - player.x) < (player.w/2 + hz.r*0.8);
-    const hitY = Math.abs(hz.y - player.y) < (player.h/2 + hz.r*0.8);
-    if (hitX && hitY){
-      fail2(); return;
-    } else if (hz.y - hz.r > h + 40){
-      hazards.splice(i,1);
+    function toast2(msg){ g2Toast.textContent = msg; g2Toast.classList.add('show'); setTimeout(()=>g2Toast.classList.remove('show'), 900); }
+    function reset2(){
+      running2 = false; cancelAnimationFrame(raf2); t02 = 0; score2 = 0; collected2 = 0;
+      player = { x: cvs.clientWidth/2, y: cvs.clientHeight-60, w: 64, h: 12, vx: 0 };
+      targets = []; hazards = []; spawnT = 0; spawnH = 0; mouseX = null;
+      g2ScoreEl.textContent = '0'; g2Win.classList.remove('show'); drawStart2();
     }
-  }
+    function drawStart2(){
+      const w = cvs.clientWidth, h = cvs.clientHeight;
+      ctx.clearRect(0,0,w,h); drawBg2(0);
+      drawPlayer2(player.x, player.y);
+      drawText2("BEWEGE DICH MIT MAUS ODER ←/→", w/2, h/2 - 14, "#bfe7f7", 16);
+      drawText2("Sammle 5 blaue Orbs · Meide rote Hindernisse", w/2, h/2 + 8, "#8bdcff", 14);
+    }
 
-  raf2 = requestAnimationFrame(step2);
-}
+    function drawBg2(time){
+      const w = cvs.clientWidth, h = cvs.clientHeight;
+      const grd = ctx.createLinearGradient(0,0,0,h);
+      grd.addColorStop(0,"#0d1622"); grd.addColorStop(1,"#0a111b");
+      ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle = "rgba(255,255,255,.22)";
+      for(let i=0;i<60;i++){ const x = ((i*97 + time*0.06) % w); const y = (i*41 % h); ctx.fillRect(x,y,2,2); }
+      ctx.fillStyle = "rgba(14,165,233,.14)"; ctx.fillRect(0, h-40, w, 2);
+    }
 
-function start2(){ if(running2) return; running2 = true; t02 = 0; g2Win.classList.remove('show'); raf2 = requestAnimationFrame(step2); g2Start.disabled = true; }
-function fail2(){ running2 = false; cancelAnimationFrame(raf2); toast2('Verloren – versuch’s nochmal!'); setTimeout(reset2, 650); }
-function win2(){ running2 = false; cancelAnimationFrame(raf2); g2Win.classList.add('show'); }
-function unlock2(){ gate.style.opacity = '0'; setTimeout(()=>{ gate.style.display='none'; body.classList.remove('gated'); }, 220); }
+    function roundRect(ctx,x,y,w,h,r,fill=false){
+      ctx.beginPath();
+      ctx.moveTo(x+r, y);
+      ctx.arcTo(x+w, y, x+w, y+h, r);
+      ctx.arcTo(x+w, y+h, x, y+h, r);
+      ctx.arcTo(x, y+h, x, y, r);
+      ctx.arcTo(x, y, x+w, y, r);
+      if(fill) ctx.fill(); else ctx.stroke();
+    }
+    function drawPlayer2(x,y){
+      ctx.save();
+      const r = 8;
+      ctx.fillStyle = "#98e6ff";
+      roundRect(ctx, x - player.w/2, y - player.h/2, player.w, player.h, r, true);
+      ctx.strokeStyle = "rgba(152,230,255,.6)"; ctx.lineWidth = 2;
+      roundRect(ctx, x - player.w/2, y - player.h/2, player.w, player.h, r, false);
+      ctx.restore();
+    }
+    function drawOrb2(o){
+      ctx.save(); ctx.translate(o.x,o.y);
+      const g = ctx.createRadialGradient(0,0,2,0,0,o.r);
+      g.addColorStop(0,"#dff8ff"); g.addColorStop(1,"#59d0ff");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0,0,o.r,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+    function drawHazard2(h){
+      ctx.save(); ctx.translate(h.x,h.y);
+      ctx.fillStyle = "#ff6b6b";
+      ctx.beginPath(); ctx.moveTo(-h.r, -h.r); ctx.lineTo(h.r, -h.r); ctx.lineTo(0, h.r); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    function drawText2(text,x,y,color="#fff",size=18){
+      ctx.fillStyle = color; ctx.font = `600 ${size}px system-ui, -apple-system, Segoe UI, Roboto, Arial`; ctx.textAlign = "center"; ctx.fillText(text,x,y);
+    }
 
-function onKey2(e){
-  if(e.code === 'ArrowLeft'){ player.vx = -3; }
-  else if(e.code === 'ArrowRight'){ player.vx = 3; }
-  else if(e.code === 'Space'){ e.preventDefault(); if(!running2) start2(); }
-}
-function onKeyUp2(e){
-  if(e.code === 'ArrowLeft' || e.code === 'ArrowRight'){ player.vx = 0; }
-}
-function onMouse2(e){
-  const rect = cvs.getBoundingClientRect();
-  mouseX = e.clientX - rect.left;
-}
-function onMouseLeave2(){ mouseX = null; }
+    function step2(ts){
+      if(!running2) return;
+      const dt = t02 ? (ts - t02)/16.67 : 1; t02 = ts;
+      const w = cvs.clientWidth, h = cvs.clientHeight;
 
-g2Start.addEventListener('click', start2);
-g2Unlock.addEventListener('click', unlock2);
-g2Skip.addEventListener('click', unlock2);
-window.addEventListener('keydown', onKey2);
-window.addEventListener('keyup', onKeyUp2);
-cvs.addEventListener('mousemove', onMouse2);
-cvs.addEventListener('mouseleave', onMouseLeave2);
-cvs.addEventListener('touchstart', (e)=>{ const t=e.changedTouches[0]; const r=cvs.getBoundingClientRect(); mouseX = t.clientX - r.left; if(!running2) start2(); }, {passive:true});
-cvs.addEventListener('touchmove', (e)=>{ const t=e.changedTouches[0]; const r=cvs.getBoundingClientRect(); mouseX = t.clientX - r.left; }, {passive:true});
-cvs.addEventListener('touchend', ()=>{ mouseX=null; }, {passive:true});
+      // Steuerung
+      if(mouseX != null){ const LERP = 0.18; player.x += (mouseX - player.x) * LERP; }
+      else { player.x += player.vx * dt * 6; }
+      player.x = Math.max(24, Math.min(w-24, player.x));
 
-reset2();
-/* ===== END GAME ===== */
+      // Spawns
+      spawnT -= dt; spawnH -= dt;
+      if (spawnT <= 0){ targets.push({ x: Math.random()*(w-40)+20, y: -20, r: 10+Math.random()*6, vy: 2.1+Math.random()*1.2 }); spawnT = 22 + Math.random()*20; }
+      if (spawnH <= 0){ hazards.push({ x: Math.random()*(w-60)+30, y: -24, r: 14+Math.random()*6, vy: 2.4+Math.random()*1.6 }); spawnH = 28 + Math.random()*22; }
+
+      targets.forEach(o => o.y += o.vy * dt * 3);
+      hazards.forEach(hz => hz.y += hz.vy * dt * 3);
+
+      ctx.clearRect(0,0,w,h);
+      drawBg2(ts/2);
+      targets.forEach(drawOrb2);
+      hazards.forEach(drawHazard2);
+      drawPlayer2(player.x, player.y);
+
+      // Orbs sammeln
+      for (let i=targets.length-1;i>=0;i--){
+        const o = targets[i];
+        if (Math.abs(o.x - player.x) < (player.w/2 + o.r) && Math.abs(o.y - player.y) < (player.h/2 + o.r)){
+          targets.splice(i,1);
+          collected2++; score2 += 100; g2ScoreEl.textContent = score2.toString();
+          if (collected2 >= GOAL2){ win2(); return; }
+        } else if (o.y - o.r > h + 40){ targets.splice(i,1); }
+      }
+      // Treffer durch Hazard -> sofort verlieren
+      for (let i=hazards.length-1;i>=0;i--){
+        const hz = hazards[i];
+        const hitX = Math.abs(hz.x - player.x) < (player.w/2 + hz.r*0.8);
+        const hitY = Math.abs(hz.y - player.y) < (player.h/2 + hz.r*0.8);
+        if (hitX && hitY){ fail2(); return; }
+        else if (hz.y - hz.r > h + 40){ hazards.splice(i,1); }
+      }
+
+      raf2 = requestAnimationFrame(step2);
+    }
+
+    function start2(){ if(running2) return; running2 = true; t02 = 0; g2Win.classList.remove('show'); raf2 = requestAnimationFrame(step2); g2Start.disabled = true; }
+    function fail2(){ running2 = false; cancelAnimationFrame(raf2); toast2('Verloren – versuch’s nochmal!'); setTimeout(reset2, 650); }
+    function win2(){ running2 = false; cancelAnimationFrame(raf2); g2Win.classList.add('show'); }
+    function unlock2(){ gateEl.style.opacity = '0'; setTimeout(()=>{ gateEl.style.display='none'; bodyEl.classList.remove('gated'); }, 220); }
+
+    function onKey2(e){
+      if(e.code === 'ArrowLeft'){ player.vx = -3; }
+      else if(e.code === 'ArrowRight'){ player.vx = 3; }
+      else if(e.code === 'Space'){ e.preventDefault(); if(!running2) start2(); }
+    }
+    function onKeyUp2(e){
+      if(e.code === 'ArrowLeft' || e.code === 'ArrowRight'){ player.vx = 0; }
+    }
+    function onMouse2(e){ const rect = cvs.getBoundingClientRect(); mouseX = e.clientX - rect.left; }
+    function onMouseLeave2(){ mouseX = null; }
+
+    g2Start.addEventListener('click', start2);
+    g2Unlock.addEventListener('click', unlock2);
+    g2Skip.addEventListener('click', unlock2);
+    window.addEventListener('keydown', onKey2);
+    window.addEventListener('keyup', onKeyUp2);
+    cvs.addEventListener('mousemove', onMouse2);
+    cvs.addEventListener('mouseleave', onMouseLeave2);
+    cvs.addEventListener('touchstart', (e)=>{ const t=e.changedTouches[0]; const r=cvs.getBoundingClientRect(); mouseX = t.clientX - r.left; if(!running2) start2(); }, {passive:true});
+    cvs.addEventListener('touchmove', (e)=>{ const t=e.changedTouches[0]; const r=cvs.getBoundingClientRect(); mouseX = t.clientX - r.left; }, {passive:true});
+    cvs.addEventListener('touchend', ()=>{ mouseX=null; }, {passive:true});
+
+    reset2();
   </script>
 </body>
 </html>
-
