@@ -161,6 +161,22 @@
     .features{list-style:none;margin:0;padding:0;display:grid;gap:10px}
     .features li{display:flex;gap:10px;align-items:flex-start}
     .features svg{flex:0 0 18px;margin-top:2px}
+
+    /* ====== TEAM (modernes Profil-Design) ====== */
+    .profile-card .card-body{padding:26px 26px 28px}
+    .profile-head{display:flex;align-items:center;gap:14px}
+    .profile-avatar{
+      width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(120% 120% at 20% 20%, var(--olive-300), var(--olive-700));
+      color:#fff;font-weight:900;letter-spacing:.5px;box-shadow:0 12px 28px rgba(85,107,47,.28)
+    }
+    .profile-title{
+      margin:0;font-weight:900;letter-spacing:-.01em;line-height:1.15;font-size:20px;
+      background:linear-gradient(90deg,var(--olive-900),var(--olive-600));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .profile-underline{height:3px;width:100%;max-width:280px;border-radius:999px;background:linear-gradient(90deg,var(--olive-400),transparent);margin-top:6px}
+    .profile-bio{margin-top:14px;color:#374151}
   </style>
 </head>
 <body>
@@ -352,22 +368,10 @@
             </div>
             <div class="pricing-expand">
               <ul class="features">
-                <li>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>2 Social-Media-Kanäle (z. B. Instagram &amp; TikTok)</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>4–6 Postings / Monat inkl. Bild-/Videobearbeitung</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Basis-Content-Plan &amp; Redaktionskalender</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Monatliches Performance-Reporting</span>
-                </li>
+                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2 Social-Media-Kanäle (z. B. Instagram &amp; TikTok)</span></li>
+                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4–6 Postings / Monat inkl. Bild-/Videobearbeitung</span></li>
+                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basis-Content-Plan &amp; Redaktionskalender</span></li>
+                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Monatliches Performance-Reporting</span></li>
               </ul>
             </div>
           </article>
@@ -433,30 +437,46 @@
       </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- TEAM (neu gestaltet) -->
     <section id="team" class="section">
       <div class="container">
         <h2 class="h2" data-reveal>Team</h2>
         <div class="grid2">
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Chris</div>
-            <p class="k-desc">
-              <strong>Chris – Strategie-Taktiker &amp; Speed-Denker</strong><br/>
-              Ebenfalls Master in Produktmarketing &amp; Innovationsmanagement. Er hat für ein Ärztezentrum Social Media &amp; Website erfolgreich aufgebaut
-              und anschließend in einem großen Unternehmen Marketing mit Agenturen koordiniert. Dort kam ihm die Erkenntnis:
-              Kleine Teams schlagen träge Strukturen – besonders, wenn der Markt sich in Lichtgeschwindigkeit dreht.
-            </p>
-          </div></article>
+          <!-- Chris -->
+          <article class="card profile-card" data-reveal>
+            <div class="card-body">
+              <div class="profile-head">
+                <div class="profile-avatar" aria-hidden="true">C</div>
+                <div>
+                  <h3 class="profile-title">Chris – Strategie-Taktiker &amp; Speed-Denker</h3>
+                  <div class="profile-underline" aria-hidden="true"></div>
+                </div>
+              </div>
+              <p class="profile-bio">
+                Ebenfalls Master in Produktmarketing &amp; Innovationsmanagement. Er hat für ein Ärztezentrum Social Media &amp; Website erfolgreich
+                aufgebaut und anschließend in einem großen Unternehmen Marketing mit Agenturen koordiniert. Dort kam ihm die Erkenntnis:
+                <em>Kleine Teams schlagen träge Strukturen – besonders, wenn der Markt sich in Lichtgeschwindigkeit dreht.</em>
+              </p>
+            </div>
+          </article>
 
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Merve</div>
-            <p class="k-desc">
-              <strong>Merve – Viral Queen &amp; Trend-Radar</strong><br/>
-              Hat den Master in Produktmarketing &amp; Innovationsmanagement und jahrelang in großen Marketingabteilungen gewirbelt. Ihre Spezialität:
-              viraler Content auf Instagram &amp; TikTok. Sie hat bereits Kanäle auf über 10&nbsp;k Follower und Millionen Views gehievt –
-              und erkennt neue Trends, bevor sie auf der „For You“-Page landen.
-            </p>
-          </div></article>
+          <!-- Merve -->
+          <article class="card profile-card" data-reveal>
+            <div class="card-body">
+              <div class="profile-head">
+                <div class="profile-avatar" aria-hidden="true">M</div>
+                <div>
+                  <h3 class="profile-title">Merve – Viral Queen &amp; Trend-Radar</h3>
+                  <div class="profile-underline" aria-hidden="true"></div>
+                </div>
+              </div>
+              <p class="profile-bio">
+                Hat den Master in Produktmarketing &amp; Innovationsmanagement und jahrelang in großen Marketingabteilungen gewirbelt. Ihre Spezialität:
+                viraler Content auf Instagram &amp; TikTok. Sie hat bereits Kanäle auf über 10&nbsp;k Follower und Millionen Views gehievt –
+                und erkennt neue Trends, bevor sie auf der „For You“-Page landen.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -539,7 +559,7 @@
     }, { threshold: .12 });
     revealEls.forEach(el => io.observe(el));
 
-    /* Hover light on cards/pricing */
+    /* Hover light on boxes */
     document.querySelectorAll('.card, .pricing-card').forEach(box=>{
       box.addEventListener('mousemove', (e) => {
         const r = box.getBoundingClientRect();
@@ -589,14 +609,14 @@
     }, {threshold:.3});
     mo.observe(methodSection);
 
-    /* ===== Pakete: berechnetes Expand (≈2x Kernhöhe) + Klick-Toggle ===== */
+    /* Pakete: berechnetes Expand (≈2x Kernhöhe) + Klick-Toggle */
     const cards = Array.from(document.querySelectorAll('.pricing-card'));
     function computeExpandHeights(){
       cards.forEach(card=>{
         const core = card.querySelector('.pricing-core');
         if(!core) return;
-        const coreH = core.offsetHeight;                // sichtbare Kernhöhe
-        const expandH = Math.round(coreH * 2);          // +2x Kern -> insgesamt ~3x Höhe
+        const coreH = core.offsetHeight;
+        const expandH = Math.round(coreH * 2);
         card.style.setProperty('--expand-h', expandH + 'px');
       });
     }
