@@ -68,10 +68,7 @@
     .card-body{padding:24px}
     .k-title{font-weight:700;color:var(--olive-900);margin-bottom:6px}
     .k-desc{color:#4b5563}
-    .card::after{
-      content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s ease;
-      background:radial-gradient(500px 200px at var(--mx,50%) var(--my,0%), rgba(133,168,60,.18), transparent 60%)
-    }
+    .card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s ease;background:radial-gradient(500px 200px at var(--mx,50%) var(--my,0%), rgba(133,168,60,.18), transparent 60%)}
     .card:hover::after{opacity:1}
 
     /* Reveal on view */
@@ -118,19 +115,43 @@
     /* ====== PAKETE (Silber/Gold/Platin) ====== */
     .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:12px}
     .pricing-card{
-      position:relative;background:#fff;border:1px solid var(--olive-300);border-radius:22px;padding:26px;
-      box-shadow:0 12px 32px rgba(85,107,47,.15);overflow:hidden;transition:transform .18s ease, box-shadow .25s ease, border-color .2s;
+      position:relative;background:#fff;border:1px solid var(--olive-300);border-radius:22px;overflow:hidden;
+      box-shadow:0 12px 32px rgba(85,107,47,.15);
+      transition:transform .18s ease, box-shadow .25s ease, border-color .2s;
+      outline:none;
     }
     .pricing-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(85,107,47,.22);border-color:var(--olive-400)}
+    .pricing-card.featured{border-color:var(--olive-600);box-shadow:0 20px 48px rgba(85,107,47,.28)}
+    .pricing-card[aria-expanded="true"]{box-shadow:0 22px 56px rgba(85,107,47,.32)}
+
     .pricing-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
     .pricing-title{font-weight:900;font-size:20px;color:var(--olive-900)}
     .pricing-accent{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--olive-400),var(--olive-700))}
     .badge-featured{
       position:absolute;top:14px;right:-36px;transform:rotate(35deg);background:var(--olive-700);color:#fff;font-weight:800;
-      padding:6px 46px;box-shadow:0 8px 20px rgba(85,107,47,.35);letter-spacing:.5px;font-size:12px
+      padding:6px 46px;box-shadow:0 8px 20px rgba(85,107,47,.35);letter-spacing:.5px;font-size:12px;pointer-events:none;
     }
-    .pricing-card.featured{border-color:var(--olive-600);box-shadow:0 20px 48px rgba(85,107,47,.28)}
     .pricing-body{color:#475569;line-height:1.6}
+
+    /* Core vs. Expand (animiertes Aufklappen) */
+    .pricing-core{padding:26px}
+    .pricing-expand{
+      border-top:1px dashed var(--olive-300);
+      padding:0 26px;
+      overflow:hidden;
+      max-height:0;
+      transition:max-height .35s ease, padding .25s ease, opacity .25s ease;
+      opacity:.0;
+      background:linear-gradient(180deg,#fff, #f8fbf1);
+    }
+    .pricing-card:hover .pricing-expand,
+    .pricing-card.open .pricing-expand,
+    .pricing-card[aria-expanded="true"] .pricing-expand{
+      max-height:var(--expand-h, 360px); /* wird via JS ≈ 2x core-Höhe gesetzt */
+      padding:16px 26px 26px;
+      opacity:1;
+    }
+    .pricing-expand p{margin:0;color:#374151}
   </style>
 </head>
 <body>
@@ -159,8 +180,8 @@
         <a href="#datenschutz">Datenschutz</a>
       </nav>
       <div style="display:flex;gap:8px">
-        <a id="waTop" class="btn btn-primary js-wa">Per WhatsApp anfragen</a>
-        <a id="mailTop" class="btn btn-ghost js-mail">Per Mail anfragen</a>
+        <a class="btn btn-primary js-wa">Per WhatsApp anfragen</a>
+        <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
       </div>
     </div>
   </header>
@@ -174,8 +195,8 @@
         <h1 class="h1" data-reveal>Hello. One-Agency-Army hier.</h1>
         <p class="lead" data-reveal>Agentu bringt dich in die Relevanz.</p>
         <div style="margin-top:24px" data-reveal>
-          <a id="waHero" class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a id="mailHero" class="btn btn-ghost js-mail">Per Mail anfragen</a>
+          <a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+          <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
         </div>
       </div>
     </section>
@@ -213,7 +234,7 @@
       </div>
     </section>
 
-    <!-- METHODE (über Leistungen) -->
+    <!-- METHODE -->
     <section id="methode" class="section">
       <div class="container">
         <h2 class="h2" data-reveal>Die 4-Schritte-Methode</h2>
@@ -231,6 +252,7 @@
               <div class="step-title">Audit</div>
               <div class="step-desc">Status, Ziele, Quick-Wins — kein Blabla, nur Klarheit.</div>
             </div>
+
             <div class="step" data-reveal>
               <div class="badge">2</div>
               <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -240,6 +262,7 @@
               <div class="step-title">Plan</div>
               <div class="step-desc">Fokus-Kanäle, Content-System, KPIs — umsetzbar statt hübsch.</div>
             </div>
+
             <div class="step" data-reveal>
               <div class="badge">3</div>
               <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -252,6 +275,7 @@
               <div class="step-title">Produktion</div>
               <div class="step-desc">Creation & Distribution im Takt des Feeds.</div>
             </div>
+
             <div class="step" data-reveal>
               <div class="badge">4</div>
               <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -298,41 +322,59 @@
       </div>
     </section>
 
-    <!-- PAKETE unter Leistungen -->
+    <!-- PAKETE (mit expand) -->
     <section id="pakete" class="section">
       <div class="container">
         <h2 class="h2" data-reveal>Pakete</h2>
-        <p class="lead" data-reveal>Unsere Produkt-Bundles – du befüllst die Details später.</p>
+        <p class="lead" data-reveal>Unsere Produkt-Bundles – Details folgen.</p>
 
         <div class="pricing-grid">
-          <article class="pricing-card" data-reveal>
-            <div class="pricing-head">
-              <div class="pricing-title">Silber</div>
+          <!-- SILBER -->
+          <article class="pricing-card" role="button" tabindex="0" aria-expanded="false" data-reveal>
+            <div class="pricing-core">
+              <div class="pricing-head">
+                <div class="pricing-title">Silber</div>
+              </div>
+              <div class="pricing-accent" aria-hidden="true"></div>
+              <div class="pricing-body" style="margin-top:12px">
+                <p>Spezifikation: <strong>Blank</strong></p>
+              </div>
             </div>
-            <div class="pricing-accent" aria-hidden="true"></div>
-            <div class="pricing-body" style="margin-top:12px">
-              <p>Spezifikation: <strong>Blank</strong></p>
+            <div class="pricing-expand">
+              <p>Blank</p>
             </div>
           </article>
 
-          <article class="pricing-card featured" data-reveal>
+          <!-- GOLD (featured) -->
+          <article class="pricing-card featured" role="button" tabindex="0" aria-expanded="false" data-reveal>
             <div class="badge-featured">BELIEBT</div>
-            <div class="pricing-head">
-              <div class="pricing-title">Gold</div>
+            <div class="pricing-core">
+              <div class="pricing-head">
+                <div class="pricing-title">Gold</div>
+              </div>
+              <div class="pricing-accent" aria-hidden="true"></div>
+              <div class="pricing-body" style="margin-top:12px">
+                <p>Spezifikation: <strong>Blank</strong></p>
+              </div>
             </div>
-            <div class="pricing-accent" aria-hidden="true"></div>
-            <div class="pricing-body" style="margin-top:12px">
-              <p>Spezifikation: <strong>Blank</strong></p>
+            <div class="pricing-expand">
+              <p>Blank</p>
             </div>
           </article>
 
-          <article class="pricing-card" data-reveal>
-            <div class="pricing-head">
-              <div class="pricing-title">Platin</div>
+          <!-- PLATIN -->
+          <article class="pricing-card" role="button" tabindex="0" aria-expanded="false" data-reveal>
+            <div class="pricing-core">
+              <div class="pricing-head">
+                <div class="pricing-title">Platin</div>
+              </div>
+              <div class="pricing-accent" aria-hidden="true"></div>
+              <div class="pricing-body" style="margin-top:12px">
+                <p>Spezifikation: <strong>Blank</strong></p>
+              </div>
             </div>
-            <div class="pricing-accent" aria-hidden="true"></div>
-            <div class="pricing-body" style="margin-top:12px">
-              <p>Spezifikation: <strong>Blank</strong></p>
+            <div class="pricing-expand">
+              <p>Blank</p>
             </div>
           </article>
         </div>
@@ -367,8 +409,8 @@
         <h2 class="h2" data-reveal>Bereit für den nächsten Schritt?</h2>
         <p class="lead" data-reveal>Social-Growth ohne Ballast.</p>
         <div style="margin-top:24px" data-reveal>
-          <a id="waBottom" class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a id="mailBottom" class="btn btn-ghost js-mail">Per Mail anfragen</a>
+          <a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+          <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
         </div>
       </div>
     </section>
@@ -488,6 +530,37 @@
       }
     }, {threshold:.3});
     mo.observe(methodSection);
+
+    /* ===== Pakete: berechnetes Expand (≈2x Kernhöhe) + Klick-Toggle ===== */
+    const cards = Array.from(document.querySelectorAll('.pricing-card'));
+    function computeExpandHeights(){
+      cards.forEach(card=>{
+        const core = card.querySelector('.pricing-core');
+        if(!core) return;
+        const coreH = core.offsetHeight;                // sichtbare Kernhöhe
+        const expandH = Math.round(coreH * 2);          // +2x Kern -> insgesamt ~3x Höhe
+        card.style.setProperty('--expand-h', expandH + 'px');
+      });
+    }
+    computeExpandHeights();
+    window.addEventListener('resize', ()=>{ requestAnimationFrame(computeExpandHeights); });
+
+    function toggleCard(card){
+      const isOpen = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', String(isOpen));
+    }
+    cards.forEach(card=>{
+      card.addEventListener('click', (e)=>{
+        // Wenn innerhalb von Links geklickt würde, nicht toggeln (derzeit keine)
+        toggleCard(card);
+      });
+      card.addEventListener('keydown',(e)=>{
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault();
+          toggleCard(card);
+        }
+      });
+    });
   </script>
 </body>
 </html>
