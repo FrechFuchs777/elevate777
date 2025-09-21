@@ -66,7 +66,6 @@
     .card{border:1px solid var(--olive-200);border-radius:var(--radius);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.05);position:relative;overflow:hidden;transition:transform .15s ease, box-shadow .2s, border-color .2s;opacity:0;translate:0 12px;cursor:default}
     .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(85,107,47,.18);border-color:var(--olive-300)}
     .card-body{padding:24px}
-
     .k-title{font-weight:700;color:var(--olive-900);margin-bottom:6px}
     .k-desc{color:#4b5563}
     .card::after{
@@ -116,6 +115,22 @@
     .step-desc{color:#475569;margin-top:6px}
     .step-icon{position:absolute;right:18px;top:18px;opacity:.9}
 
+    /* ====== PAKETE (Silber/Gold/Platin) ====== */
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:12px}
+    .pricing-card{
+      position:relative;background:#fff;border:1px solid var(--olive-300);border-radius:22px;padding:26px;
+      box-shadow:0 12px 32px rgba(85,107,47,.15);overflow:hidden;transition:transform .18s ease, box-shadow .25s ease, border-color .2s;
+    }
+    .pricing-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(85,107,47,.22);border-color:var(--olive-400)}
+    .pricing-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .pricing-title{font-weight:900;font-size:20px;color:var(--olive-900)}
+    .pricing-accent{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--olive-400),var(--olive-700))}
+    .badge-featured{
+      position:absolute;top:14px;right:-36px;transform:rotate(35deg);background:var(--olive-700);color:#fff;font-weight:800;
+      padding:6px 46px;box-shadow:0 8px 20px rgba(85,107,47,.35);letter-spacing:.5px;font-size:12px
+    }
+    .pricing-card.featured{border-color:var(--olive-600);box-shadow:0 20px 48px rgba(85,107,47,.28)}
+    .pricing-body{color:#475569;line-height:1.6}
   </style>
 </head>
 <body>
@@ -132,8 +147,8 @@
               <stop offset="1" stop-color="#556B2F"/>
             </linearGradient>
           </defs>
-        <path d="M10 42c14-2 26-12 35-29 1-2 4-3 6-1 2 2 1 5 0 7-9 17-22 27-37 30-3 1-6-1-6-4s1-3 2-3z" fill="url(#olvg)"/>
-        <circle cx="46" cy="13" r="4" fill="#a7c05a"/>
+          <path d="M10 42c14-2 26-12 35-29 1-2 4-3 6-1 2 2 1 5 0 7-9 17-22 27-37 30-3 1-6-1-6-4s1-3 2-3z" fill="url(#olvg)"/>
+          <circle cx="46" cy="13" r="4" fill="#a7c05a"/>
         </svg>
         <strong>Agentu</strong>
       </div>
@@ -144,8 +159,8 @@
         <a href="#datenschutz">Datenschutz</a>
       </nav>
       <div style="display:flex;gap:8px">
-        <a id="waTop" class="btn btn-primary">Per WhatsApp anfragen</a>
-        <a id="mailTop" class="btn btn-ghost">E-Mail senden</a>
+        <a id="waTop" class="btn btn-primary js-wa">Per WhatsApp anfragen</a>
+        <a id="mailTop" class="btn btn-ghost js-mail">Per Mail anfragen</a>
       </div>
     </div>
   </header>
@@ -159,13 +174,13 @@
         <h1 class="h1" data-reveal>Hello. One-Agency-Army hier.</h1>
         <p class="lead" data-reveal>Agentu bringt dich in die Relevanz.</p>
         <div style="margin-top:24px" data-reveal>
-          <a id="waHero" class="btn btn-primary" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a id="mailHero" class="btn btn-ghost">E-Mail senden</a>
+          <a id="waHero" class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+          <a id="mailHero" class="btn btn-ghost js-mail">Per Mail anfragen</a>
         </div>
       </div>
     </section>
 
-    <!-- WARUM (bleibt) -->
+    <!-- WARUM -->
     <section class="section section-muted">
       <div class="container">
         <h2 class="h2" data-reveal>Warum wir auf einem anderen Level sind, als andere "Agenturen"</h2>
@@ -198,7 +213,7 @@
       </div>
     </section>
 
-    <!-- ======= NEU: METHODE (über Leistungen) ======= -->
+    <!-- METHODE (über Leistungen) -->
     <section id="methode" class="section">
       <div class="container">
         <h2 class="h2" data-reveal>Die 4-Schritte-Methode</h2>
@@ -216,7 +231,6 @@
               <div class="step-title">Audit</div>
               <div class="step-desc">Status, Ziele, Quick-Wins — kein Blabla, nur Klarheit.</div>
             </div>
-
             <div class="step" data-reveal>
               <div class="badge">2</div>
               <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -226,7 +240,6 @@
               <div class="step-title">Plan</div>
               <div class="step-desc">Fokus-Kanäle, Content-System, KPIs — umsetzbar statt hübsch.</div>
             </div>
-
             <div class="step" data-reveal>
               <div class="badge">3</div>
               <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -239,7 +252,6 @@
               <div class="step-title">Produktion</div>
               <div class="step-desc">Creation & Distribution im Takt des Feeds.</div>
             </div>
-
             <div class="step" data-reveal>
               <div class="badge">4</div>
               <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -253,7 +265,7 @@
       </div>
     </section>
 
-    <!-- LEISTUNGEN (jetzt unter Methode) -->
+    <!-- LEISTUNGEN -->
     <section id="leistungen" class="section section-muted">
       <div class="container">
         <h2 class="h2" data-reveal>Leistungen</h2>
@@ -286,6 +298,52 @@
       </div>
     </section>
 
+    <!-- PAKETE unter Leistungen -->
+    <section id="pakete" class="section">
+      <div class="container">
+        <h2 class="h2" data-reveal>Pakete</h2>
+        <p class="lead" data-reveal>Unsere Produkt-Bundles – du befüllst die Details später.</p>
+
+        <div class="pricing-grid">
+          <article class="pricing-card" data-reveal>
+            <div class="pricing-head">
+              <div class="pricing-title">Silber</div>
+            </div>
+            <div class="pricing-accent" aria-hidden="true"></div>
+            <div class="pricing-body" style="margin-top:12px">
+              <p>Spezifikation: <strong>Blank</strong></p>
+            </div>
+          </article>
+
+          <article class="pricing-card featured" data-reveal>
+            <div class="badge-featured">BELIEBT</div>
+            <div class="pricing-head">
+              <div class="pricing-title">Gold</div>
+            </div>
+            <div class="pricing-accent" aria-hidden="true"></div>
+            <div class="pricing-body" style="margin-top:12px">
+              <p>Spezifikation: <strong>Blank</strong></p>
+            </div>
+          </article>
+
+          <article class="pricing-card" data-reveal>
+            <div class="pricing-head">
+              <div class="pricing-title">Platin</div>
+            </div>
+            <div class="pricing-accent" aria-hidden="true"></div>
+            <div class="pricing-body" style="margin-top:12px">
+              <p>Spezifikation: <strong>Blank</strong></p>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align:center;margin-top:24px" data-reveal>
+          <a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+          <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
+        </div>
+      </div>
+    </section>
+
     <!-- TEAM -->
     <section id="team" class="section">
       <div class="container">
@@ -309,8 +367,8 @@
         <h2 class="h2" data-reveal>Bereit für den nächsten Schritt?</h2>
         <p class="lead" data-reveal>Social-Growth ohne Ballast.</p>
         <div style="margin-top:24px" data-reveal>
-          <a id="waBottom" class="btn btn-primary" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a id="mailBottom" class="btn btn-ghost">E-Mail senden</a>
+          <a id="waBottom" class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+          <a id="mailBottom" class="btn btn-ghost js-mail">Per Mail anfragen</a>
         </div>
       </div>
     </section>
@@ -351,7 +409,7 @@
           <p class="p" style="margin:0;flex:1">Wir verwenden nur essenzielle Cookies für den Betrieb dieser Website. Analytics ist derzeit <strong>deaktiviert</strong>.</p>
           <div style="display:flex;gap:8px">
             <button id="cookieAccept" class="btn btn-primary">Einverstanden</button>
-            <a href="#datenschutz" class="btn btn-ghost">Details</a>
+            <a href="#datenschutz" class="btn btn-ghost js-mail">Details</a>
           </div>
         </div>
       </div>
@@ -362,7 +420,7 @@
     /* ==== KONFIGURATION ==== */
     const WHATSAPP_NUMBER = "+436604240704";
     const DEFAULT_WA_TEXT = "Hallo Agentu, ich interessiere mich für Social-Media-Unterstützung.";
-    const CONTACT_EMAIL   = "";
+    const CONTACT_EMAIL   = "christopher.stainer@live.at";
 
     /* Progressbar */
     const progress = document.getElementById('progress');
@@ -375,36 +433,37 @@
     onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
     /* Reveal on view */
-    const revealEls = document.querySelectorAll('[data-reveal], .card');
+    const revealEls = document.querySelectorAll('[data-reveal], .card, .pricing-card');
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) if (e.isIntersecting) { e.target.classList.add('reveal-visible'); io.unobserve(e.target); }
     }, { threshold: .12 });
     revealEls.forEach(el => io.observe(el));
 
-    /* Card hover light (nur visuell) */
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
+    /* Hover light on cards/pricing */
+    document.querySelectorAll('.card, .pricing-card').forEach(box=>{
+      box.addEventListener('mousemove', (e) => {
+        const r = box.getBoundingClientRect();
         const x = e.clientX - r.left; const y = e.clientY - r.top;
-        card.style.setProperty('--mx', x + 'px'); card.style.setProperty('--my', y + 'px');
+        box.style.setProperty('--mx', x + 'px'); box.style.setProperty('--my', y + 'px');
       });
     });
 
     /* Button magnet */
-    const makeMagnetic = (btn) => {
-      if (!btn) return;
-      btn.addEventListener('mousemove', (e) => {
-        const r = btn.getBoundingClientRect(); const mx = e.clientX - (r.left + r.width/2); const my = e.clientY - (r.top + r.height/2);
-        const k = 0.22; btn.style.transform = `translate(${mx*k}px, ${my*k}px)`;
+    const makeMagnetic = (el) => {
+      if (!el) return;
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect(); const mx = e.clientX - (r.left + r.width/2); const my = e.clientY - (r.top + r.height/2);
+        const k = 0.22; el.style.transform = `translate(${mx*k}px, ${my*k}px)`;
       });
-      btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
+      el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0,0)'; });
     };
-    ['waTop','waHero','waBottom','mailTop','mailHero','mailBottom'].map(id=>document.getElementById(id)).forEach(makeMagnetic);
+    document.querySelectorAll('.btn').forEach(makeMagnetic);
 
+    /* Kontakt-Links setzen */
     function buildWaLink(){ if (!WHATSAPP_NUMBER) return '#'; const num = WHATSAPP_NUMBER.replace(/\s+/g,'').replace('+',''); return `https://wa.me/${num}?text=${encodeURIComponent(DEFAULT_WA_TEXT)}`; }
     function buildMailLink(){ return CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : '#'; }
-    ;[['waTop','waHero','waBottom']].flat().forEach(id=>{ const el=document.getElementById(id); if (el && WHATSAPP_NUMBER) el.setAttribute('href', buildWaLink()); else if(el) el.style.opacity='.5';});
-    ;[['mailTop','mailHero','mailBottom']].flat().forEach(id=>{ const el=document.getElementById(id); if (el && CONTACT_EMAIL) el.setAttribute('href', buildMailLink()); else if(el) el.style.display='none';});
+    document.querySelectorAll('a.js-wa').forEach(el => el.setAttribute('href', buildWaLink()));
+    document.querySelectorAll('a.js-mail').forEach(el => el.setAttribute('href', buildMailLink()));
 
     /* Cookie */
     (function(){
