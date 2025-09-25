@@ -478,6 +478,35 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
 .card.service:hover::after{ opacity:1; }
 
 </style>
+<style>
+/* === Mobile nav button sizing & spacing (iPhone) === */
+@media (max-width: 430px){
+  header.nav .nav-inner{ gap: 8px; }
+  header.nav .brand{ margin-right: 6px; }
+  header.nav .btn{ 
+    padding: 8px 10px !important; 
+    font-size: 13px !important; 
+    line-height: 1.1 !important;
+    border-radius: 10px !important;
+  }
+  header.nav .btn.btn-primary,
+  header.nav .btn.btn-ghost{ box-shadow: none; }
+  header.nav .nav-links{ display:none; }
+  header.nav .brand strong{ font-size: 18px; }
+  header.nav .container.nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  header.nav .contact-actions{
+    display:flex; gap:6px; margin-left:auto;
+  }
+}
+/* Slightly larger phones */
+@media (max-width: 375px){
+  header.nav .btn{ padding: 7px 9px !important; font-size: 12.5px !important; }
+  header.nav .brand strong{ font-size: 17px; }
+}
+
+</style>
 </head>
 <body>
 <!-- ======= NAV ======= -->
@@ -513,7 +542,7 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
 <a href="#impressum">Impressum</a>
 <a href="#datenschutz">Datenschutz</a>
 </nav>
-<div style="display:flex;gap:8px">
+<div class="contact-actions" style="display:flex;gap:8px">
 <a class="btn btn-primary js-wa">Per WhatsApp anfragen</a>
 <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
 </div>
