@@ -1,19 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agentu — One-Agency-Army</title>
-  <meta name="description" content="Agentu bringt deine Marke dorthin, wo Menschen sind – durch Social & KI am Puls der Zeit.">
-  <meta name="theme-color" content="#556B2F">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Agentu — One-Agency-Army</title>
+<meta content="Agentu bringt deine Marke dorthin, wo Menschen sind – durch Social &amp; KI am Puls der Zeit." name="description"/>
+<meta content="#556B2F" name="theme-color"/>
+<style>
     :root{
       /* Olive Palette (kräftig) */
       --olive-900:#2f3b16;
       --olive-800:#3f4e1d;
       --olive-700:#4c6122;
       --olive-600:#556B2F;  /* base */
-      --olive-500:#6B8E23;  /* classic olive */
+      --olive-500:#7a3cff;  /* classic olive */
       --olive-400:#85a83c;
       --olive-300:#a7c05a;
       --olive-200:#c7d98b;
@@ -186,392 +187,611 @@
     .quick span{display:block;font-size:12px;color:#4b5563}
     .profile-bio{margin-top:12px;color:#374151}
     @media (max-width:560px){ .profile-quick{grid-template-columns:1fr 1fr;} }
-  </style>
+  
+/* ===== Refined Team Cards (v2) ===== */
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:16px}
+@media (max-width:900px){.team-grid{grid-template-columns:1fr}}
+.team-card{display:grid;grid-template-columns:140px 1fr;gap:18px;align-items:start;
+  background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.7)),var(--soft-bg);
+  border:1px solid var(--olive-200);border-radius:18px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+@media (max-width:640px){.team-card{grid-template-columns:1fr}}
+.team-media{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--olive-200);background:#f8faf8}
+.team-media::before{content:"";display:block;aspect-ratio:9/16;width:100%}
+.team-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.team-badge{position:absolute;top:8px;left:8px;background:rgba(47,59,22,.85);color:#fff;font-weight:700;font-size:12px;
+  padding:4px 8px;border-radius:999px;backdrop-filter:blur(4px);letter-spacing:.2px}
+.team-body h3{font-size:20px;line-height:1.2;margin:0;color:var(--olive-900)}
+.team-role{font-size:14px;color:var(--olive-700);margin-top:2px}
+.team-pills{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.team-pill{font-size:12px;line-height:1;border:1px solid var(--olive-300);padding:6px 8px;border-radius:999px;background:rgba(85,107,47,.06)}
+.team-bio{margin-top:6px;color:#1e293b;font-size:14px;line-height:1.55}
+.team-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+@media (max-width:640px){.team-meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.team-meta .m{background:rgba(85,107,47,.07);border:1px solid var(--olive-200);border-radius:12px;padding:10px}
+.team-meta .m strong{display:block;font-size:12px;color:var(--olive-800);margin-bottom:2px}
+.team-meta .m span{font-size:12px;color:#334155}
+
+</style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="True" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><style>
+/* ===== Agentu Dark Purple Theme Overrides (2025-09-25) ===== */
+:root{
+  --olive-900:#0b0a10; /* near-black */
+  --olive-800:#140f1d;
+  --olive-700:#1c1530;
+  --olive-600:#2a1952; /* primary purple-dark */
+  --olive-500:#3a1f78;
+  --olive-400:#5a2bb6;
+  --olive-300:#7a3cff; /* accent */
+  --olive-200:#b69cff;
+  --olive-100:#e4ddff;
+  --bg-0: radial-gradient(1200px 800px at 10% -10%, rgba(122,60,255,.18), transparent 60%), linear-gradient(#0b0a10,#140f1d 60%, #0b0a10);
+  --text-1:#f5f4f9;
+  --text-2:#c9c5d7;
+  --surface-1:rgba(255,255,255,.04);
+  --surface-2:rgba(255,255,255,.07);
+  --shadow-1:0 8px 24px rgba(122,60,255,.25), 0 2px 6px rgba(0,0,0,.4);
+}
+html,body{background:var(--bg-0); color:var(--text-1); font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; }
+.h1,.h2,.h3,.brand strong,.pricing-title,.k-title,.step-title{font-family:"Space Grotesk", "Inter", sans-serif; letter-spacing:.2px}
+a, .nav-links a{color:var(--olive-200)}
+.btn{border-radius:14px}
+.btn-primary{background:linear-gradient(135deg, var(--olive-400), var(--olive-300)); color:#0b0a10; border-color:rgba(0,0,0,0); box-shadow:0 6px 18px rgba(122,60,255,.35)}
+.btn-primary:hover{filter:brightness(1.05); transform:translateY(-1px)}
+.btn-ghost{background:var(--surface-1); border-color:var(--olive-600); color:var(--text-1)}
+.btn-ghost:hover{background:var(--surface-2)}
+
+/* Cards */
+.card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-color:rgba(255,255,255,.08); box-shadow:var(--shadow-1);}
+.card:hover{box-shadow:0 18px 36px rgba(0,0,0,.35), 0 8px 20px rgba(122,60,255,.25)}
+.k-title{color:var(--olive-100)}
+.k-desc{color:var(--text-2)}
+
+/* Header/Nav */
+.header{backdrop-filter:saturate(120%) blur(10px); background:linear-gradient( to bottom, rgba(10,8,16,.8), rgba(10,8,16,.35)); border-color:rgba(255,255,255,.08)}
+.nav-links a::after{background:linear-gradient(90deg,var(--olive-300),var(--olive-100))}
+
+/* Hero */
+.hero-wrap{background:radial-gradient(600px 400px at 80% -20%, rgba(122,60,255,.25), transparent 60%)}
+.hero-blob{background:radial-gradient(200px 200px at 50% 50%, rgba(122,60,255,.25), rgba(58,31,120,.2), transparent 70%)}
+
+/* Steps & pricing accents adopt purple */
+.badge{background:linear-gradient(160deg,var(--olive-400),var(--olive-300)); color:#0b0a10}
+.step-icon path[stroke]{stroke:var(--olive-300)}
+.price{color:var(--olive-100)}
+.pricing-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-color:rgba(255,255,255,.08)}
+.pricing-accent{background:linear-gradient(90deg, var(--olive-600), transparent)}
+.pricing-card:is(:hover,:focus-visible){outline-color:var(--olive-300)}
+
+/* Section backgrounds */
+.section-muted{background:linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.04))}
+
+/* ===== Leistungen: clickable cards -> modal overlay ===== */
+.card.service{cursor:pointer}
+.modal-scrim{position:fixed; inset:0; background:rgba(5,4,10,.55); backdrop-filter:blur(8px); display:none; align-items:center; justify-content:center; padding:20px; z-index:2000}
+.modal{width:min(840px, 92vw); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.12); border-radius:22px; box-shadow:0 30px 80px rgba(0,0,0,.5), 0 20px 40px rgba(122,60,255,.25); transform:translateY(20px); opacity:0; transition:transform .25s ease, opacity .25s ease}
+.modal-header{display:flex; align-items:center; justify-content:space-between; padding:20px 22px; border-bottom:1px solid rgba(255,255,255,.08)}
+.modal-title{font-family:"Space Grotesk"; font-size:22px}
+.modal-body{padding:22px}
+.modal-close{border:0; background:var(--surface-1); color:var(--text-1); border-radius:12px; padding:10px 12px; cursor:pointer}
+.modal-scrim.active{display:flex}
+.modal-scrim.active .modal{opacity:1; transform:none}
+.modal-placeholder{min-height:180px; border:1px dashed rgba(255,255,255,.18); border-radius:16px; display:flex; align-items:center; justify-content:center; color:var(--text-2)}
+
+/* ===== Warum-Agentu: flip cards with video back ===== */
+.flippable{perspective:1200px}
+.flip-inner{position:relative; transform-style:preserve-3d; transition:transform .6s}
+.flippable:hover .flip-inner{transform:rotateY(180deg)}
+.flippable.is-flipped .flip-inner{transform:rotateY(180deg)}
+.flip-face{backface-visibility:hidden}
+.flip-back{position:absolute; inset:0; transform:rotateY(180deg); display:flex}
+.flip-front, .flip-back{border-radius:inherit; overflow:hidden}
+.flip-back .video-holder{display:flex; align-items:center; justify-content:center; width:100%; background:radial-gradient(400px 300px at 50% 50%, rgba(122,60,255,.15), rgba(255,255,255,.04))}
+.flip-back .video-holder .placeholder{opacity:.75; font-size:14px; color:var(--text-2)}
+.flip-back video{width:100%; height:100%; object-fit:cover}
+
+/* Mobile & a11y */
+@media (max-width: 720px){
+  .grid3, .grid2{grid-template-columns:1fr; gap:14px}
+  .nav-links{display:none}
+  .btn{padding:12px 14px; font-size:16px}
+  .card{padding:2px}
+}
+@media (prefers-reduced-motion: reduce){
+  .flip-inner{transition:none}
+}
+
+/* Improve focus states */
+:focus-visible{outline:2px solid var(--olive-300); outline-offset:2px; border-radius:12px}
+
+/* === Readability & Contrast Enhancements (WCAG-minded) === */
+.lead{color:var(--text-2)!important; line-height:1.6}
+.p{color:var(--text-2)!important; line-height:1.7}
+.h1{color:var(--text-1)!important; text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.h2,.h3{color:var(--text-1)!important}
+header.nav{background:linear-gradient( to bottom, rgba(10,8,16,.92), rgba(10,8,16,.6))!important; border-bottom:1px solid rgba(255,255,255,.08)!important}
+.nav-links a{color:var(--text-2)!important}
+.progress-bar{background:linear-gradient(90deg,var(--olive-300),var(--olive-100))!important}
+.card-body{color:var(--text-2)}
+footer, .footer-inner{color:var(--text-2)!important}
+footer a{color:var(--olive-200)!important}
+footer .container > div:first-child div:first-child{color:var(--text-1)!important}
+.section.section-muted{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02))!important}
+/* Ensure borders are visible on dark */
+.card, .pricing-card, .step, .quick, .pill{border-color:rgba(255,255,255,.14)!important}
+.profile-underline{background:linear-gradient(90deg,var(--olive-300),transparent)!important}
+/* Cookie banner dark mode */
+.cookie .box{background:var(--surface-1)!important; border-color:rgba(255,255,255,.14)!important; box-shadow:0 10px 30px rgba(0,0,0,.5)!important}
+.cookie .box .p{color:var(--text-2)!important}
+.cookie .btn-ghost{border-color:rgba(255,255,255,.18)!important}
+/* Buttons: ensure strong contrast */
+.btn-ghost{color:var(--text-1)!important}
+.btn-primary{color:#0b0a10!important}
+/* Pricing feature ticks recolor for contrast */
+.features li svg path{stroke:var(--olive-300)!important}
+/* Ensure inline SVG strokes that were olive become purple */
+svg [stroke="#7a3cff"]{stroke:var(--olive-300)!important}
+svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
+/* Improve link contrast inside text blocks */
+.container a:not(.btn){text-decoration:underline dotted; text-underline-offset:3px}
+@media (max-width:720px){
+  .h1{font-size:36px}
+  .h2{font-size:24px}
+}
+</style><style>
+/* ==== Agentu Dark-Purple UI Polish v3 (steps, pricing, team) ==== */
+
+/* 4 Schritte zur Relevanz */
+.step{
+  background:var(--surface-1)!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  box-shadow: var(--shadow-1)!important;
+}
+.method-track{
+  background:linear-gradient(90deg,var(--olive-900),var(--olive-500),var(--olive-300))!important;
+  box-shadow:0 8px 28px rgba(122,60,255,.28)!important;
+}
+.badge{
+  background:radial-gradient(120% 120% at 20% 20%, var(--olive-300), var(--olive-600))!important;
+  box-shadow:0 12px 28px rgba(122,60,255,.28)!important;
+}
+.step-title{ color:var(--text-1)!important; }
+.step-desc{ color:var(--text-2)!important; }
+.step-icon{ opacity:.95!important; }
+
+/* Pricing */
+.pricing-card{
+  background:var(--surface-1)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  box-shadow: var(--shadow-1)!important;
+}
+.pricing-card:hover{
+  border-color: rgba(255,255,255,.22)!important;
+  box-shadow:0 14px 44px rgba(0,0,0,.45), 0 10px 24px rgba(122,60,255,.20)!important;
+}
+.pricing-card.featured{ border-color:var(--olive-300)!important; }
+.pricing-title, .pricing-tagline, .price{ color:var(--text-1)!important; }
+.pricing-tagline{ color:var(--text-2)!important; }
+.pricing-accent{
+  background:linear-gradient(90deg,var(--olive-300),var(--olive-500))!important;
+}
+.features li{ color:var(--text-2)!important; }
+.features svg [stroke]{ stroke:var(--olive-300)!important; }
+.features svg [fill]{ fill:var(--olive-300)!important; }
+
+/* Pricing Expand Panel */
+.pricing-expand{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))!important;
+  border-top:1px solid rgba(255,255,255,.14)!important;
+  color:var(--text-2)!important;
+  backdrop-filter: blur(8px);
+}
+.pricing-card.open .pricing-expand,
+.pricing-card[aria-expanded="true"] .pricing-expand{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* Team Cards */
+.profile-card{
+  background:var(--surface-1)!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  box-shadow: var(--shadow-1)!important;
+}
+.profile-title{
+  background:linear-gradient(90deg,var(--text-1), var(--olive-200))!important;
+  -webkit-background-clip:text; background-clip:text; color:transparent!important;
+}
+.profile-underline{
+  background:linear-gradient(90deg, var(--olive-300), transparent)!important;
+}
+.pill{
+  background:rgba(255,255,255,.04)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  color:var(--text-2)!important;
+}
+.quick{
+  background:rgba(255,255,255,.04)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  color:var(--text-2)!important;
+  box-shadow:0 2px 10px rgba(0,0,0,.35)!important;
+}
+
+/* Accessibility: ensure small metas are readable */
+.small, .meta, .muted{ color:var(--text-2)!important; }
+
+@media (max-width: 720px){
+  .pricing-grid{ gap:16px!important; }
+  .pricing-card{ border-radius:18px!important; }
+  .step{ padding:22px!important; }
+  .profile-card .card-body{ padding:22px!important; }
+}
+</style>
 </head>
 <body>
-  <!-- ======= NAV ======= -->
-  <header class="nav">
-    <div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
-    <div class="container nav-inner">
-      <div class="brand" aria-label="Agentu Start">
-        <!-- Olive-Leaf Logo SVG -->
-        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
-          <defs>
-            <linearGradient id="olvg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#6B8E23"/>
-              <stop offset="1" stop-color="#556B2F"/>
-            </linearGradient>
-          </defs>
-          <path d="M10 42c14-2 26-12 35-29 1-2 4-3 6-1 2 2 1 5 0 7-9 17-22 27-37 30-3 1-6-1-6-4s1-3 2-3z" fill="url(#olvg)"/>
-          <circle cx="46" cy="13" r="4" fill="#a7c05a"/>
-        </svg>
-        <strong>Agentu</strong>
-      </div>
-      <nav class="nav-links">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#team">Team</a>
-        <a href="#impressum">Impressum</a>
-        <a href="#datenschutz">Datenschutz</a>
-      </nav>
-      <div style="display:flex;gap:8px">
-        <a class="btn btn-primary js-wa">Per WhatsApp anfragen</a>
-        <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
-      </div>
-    </div>
-  </header>
+<!-- ======= NAV ======= -->
+<header class="nav">
+<div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+<div class="container nav-inner">
+<div aria-label="Agentu Start" class="brand">
+<!-- Agentu Monogram Logo (Dark Purple) -->
+<svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" role="img">
+  <defs>
+    <linearGradient id="ag_purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a3cff"/>
+      <stop offset="1" stop-color="#2a1952"/>
+    </linearGradient>
+    <linearGradient id="ag_glow" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="rgba(122,60,255,0.9)"/>
+      <stop offset="1" stop-color="rgba(58,31,120,0.2)"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer ring -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="url(#ag_purple)" stroke-width="4"/>
+  <!-- Inner glow -->
+  <circle cx="32" cy="32" r="20" fill="none" stroke="url(#ag_glow)" stroke-width="6" opacity=".35"/>
+  <!-- Stylized A -->
+  <path d="M32 14 L47 50 H41 L37 40 H27 L23 50 H17 L32 14 Z M34.2 34 L30 24.6 25.8 34h8.4Z"
+        fill="url(#ag_purple)"/>
+</svg>
+<strong style="color:var(--text-1)">Agentu</strong>
+</div>
+<nav class="nav-links">
+<a href="#leistungen">Leistungen</a>
+<a href="#team">Team</a>
+<a href="#impressum">Impressum</a>
+<a href="#datenschutz">Datenschutz</a>
+</nav>
+<div style="display:flex;gap:8px">
+<a class="btn btn-primary js-wa">Per WhatsApp anfragen</a>
+<a class="btn btn-ghost js-mail">Per Mail anfragen</a>
+</div>
+</div>
+</header>
+<!-- ======= CONTENT ======= -->
+<main>
+<!-- HERO -->
+<section class="section">
+<div class="container hero-wrap">
+<div aria-hidden="true" class="hero-blob"></div>
+<h1 class="h1" data-reveal="">Hallo. Agentu hier. One-Agency-Army.</h1>
+<p class="lead" data-reveal="">Agentu macht dich relevant.</p>
+<div data-reveal="" style="margin-top:24px">
+<a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+<a class="btn btn-ghost js-mail">Per Mail anfragen</a>
+</div>
+</div>
+</section>
+<!-- WARUM -->
+<section class="section section-muted">
+<div class="container">
+<h2 class="h2" data-reveal="">Warum Agentu und keine träge Riesen-Agentur?</h2>
+<div class="grid3">
+<article class="card" data-reveal="">
+<div class="card-body">
+<div class="k-title">Geschwindigkeit</div>
+<p class="k-desc">Entscheidungen in Sekunden, nicht in Quartalen.</p>
+</div>
+</article>
+<article class="card" data-reveal="">
+<div class="card-body">
+<div class="k-title">Nähe</div>
+<p class="k-desc">Direkter Zugang zu den Machern statt Account-Schichten.</p>
+</div>
+</article>
+<article class="card" data-reveal="">
+<div class="card-body">
+<div class="k-title">Experimentier-Stärke</div>
+<p class="k-desc">Tests &amp; Iteration statt PowerPoint-Theorie.</p>
+</div>
+</article>
+<article class="card" data-reveal="">
+<div class="card-body">
+<div class="k-title">KI-Adaption</div>
+<p class="k-desc">Neue Tools produktiv nutzen, sobald sie erscheinen.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- METHODE -->
+<section class="section" id="methode">
+<div class="container">
+<h2 class="h2" data-reveal="">4 Schritte zur Relevanz</h2>
+<p class="sub" data-reveal="">You can just do things.</p>
+<div class="method-wrap" id="methodWrap">
+<div aria-hidden="true" class="method-track"></div>
+<div class="steps">
+<div class="step" data-reveal="">
+<div class="badge">1</div>
+<svg aria-hidden="true" class="step-icon" fill="none" height="24" viewbox="0 0 24 24" width="24">
+<circle cx="11" cy="11" r="7" stroke="#7a3cff" stroke-width="2"></circle>
+<path d="M20 20l-3.2-3.2" stroke="#7a3cff" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<div class="step-title">Audit</div>
+<div class="step-desc">Status, Ziele, Quick-Wins — kein Blabla, nur Klarheit.</div>
+</div>
+<div class="step" data-reveal="">
+<div class="badge">2</div>
+<svg aria-hidden="true" class="step-icon" fill="none" height="24" viewbox="0 0 24 24" width="24">
+<path d="M4 18V6l8-2 8 2v12l-8 2-8-2Z" stroke="#7a3cff" stroke-width="2"></path>
+<path d="M8 12h8M8 9h8M8 15h5" stroke="#7a3cff" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<div class="step-title">Plan</div>
+<div class="step-desc">Fokus-Kanäle, Content-System, KPIs — umsetzbar statt hübsch.</div>
+</div>
+<div class="step" data-reveal="">
+<div class="badge">3</div>
+<svg aria-hidden="true" class="step-icon" fill="none" height="24" viewbox="0 0 24 24" width="24">
+<rect height="14" rx="2" stroke="#7a3cff" stroke-width="2" width="18" x="3" y="5"></rect>
+<path d="M3 10h18" stroke="#7a3cff" stroke-width="2"></path>
+<circle cx="8" cy="8" fill="#7a3cff" r="1"></circle>
+<circle cx="11" cy="8" fill="#7a3cff" r="1"></circle>
+<circle cx="14" cy="8" fill="#7a3cff" r="1"></circle>
+</svg>
+<div class="step-title">Produktion</div>
+<div class="step-desc">Creation &amp; Distribution im Takt des Feeds.</div>
+</div>
+<div class="step" data-reveal="">
+<div class="badge">4</div>
+<svg aria-hidden="true" class="step-icon" fill="none" height="24" viewbox="0 0 24 24" width="24">
+<path d="M12 3l2 6h6l-5 3.6L17 19l-5-3.4L7 19l2-6.4L4 9h6l2-6Z" stroke="#7a3cff" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<div class="step-title">Lernen</div>
+<div class="step-desc">Reporting, A/B-Tests, Skalierung – stetig besser.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- LEISTUNGEN -->
+<section class="section section-muted" id="leistungen">
+<div class="container">
+<h2 class="h2" data-reveal="">Leistungen</h2>
+<div class="grid3">
+<article class="card" data-reveal=""><div class="card-body">
+<div class="k-title">Konzeptplanung</div>
+<p class="k-desc">Klarer Fahrplan von Ziel bis KPI.</p>
+</div></article>
+<article class="card" data-reveal=""><div class="card-body">
+<div class="k-title">Contentplanung</div>
+<p class="k-desc">Redaktionspläne, die verkaufen statt füllen.</p>
+</div></article>
+<article class="card" data-reveal=""><div class="card-body">
+<div class="k-title">Contenterstellung</div>
+<p class="k-desc">Schlanke Produktion für Social-Tempo.</p>
+</div></article>
+<article class="card" data-reveal=""><div class="card-body">
+<div class="k-title">Community-Management</div>
+<p class="k-desc">Antworten, die Beziehungen bauen.</p>
+</div></article>
+<article class="card" data-reveal=""><div class="card-body">
+<div class="k-title">Paid Social</div>
+<p class="k-desc">Medienbudget effizienter in Wirkung verwandeln.</p>
+</div></article>
+<article class="card" data-reveal=""><div class="card-body">
+<div class="k-title">Monitoring</div>
+<p class="k-desc">Kennzahlen, Learnings, nächste beste Aktion.</p>
+</div></article>
+</div>
+</div>
+</section>
+<!-- PAKETE (Preis sichtbar + Expand mit Features) -->
+<section class="section" id="pakete">
+<div class="container">
+<h2 class="h2" data-reveal="">Pakete</h2>
+<p class="lead" data-reveal="">Agentu - mit alles &amp; scharf?</p>
+<div class="pricing-grid">
+<!-- SILBER -->
+<article aria-expanded="false" class="pricing-card" data-reveal="" role="button" tabindex="0">
+<div class="pricing-core">
+<div class="pricing-head">
+<div class="pricing-titles">
+<div class="pricing-title">Silber</div>
+<div class="pricing-tagline">solider Start</div>
+</div>
+<div class="price">ca. € 900 / Monat</div>
+</div>
+<div aria-hidden="true" class="pricing-accent"></div>
+<div class="pricing-body" style="margin-top:12px">
+<p>Für einen strukturierten Einstieg mit klaren Basics.</p>
+</div>
+</div>
+<div class="pricing-expand">
+<ul class="features">
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>2 Social-Media-Kanäle (z. B. Instagram &amp; TikTok)</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>4–6 Postings / Monat inkl. Bild-/Videobearbeitung</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Basis-Content-Plan &amp; Redaktionskalender</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Monatliches Performance-Reporting</span></li>
+</ul>
+</div>
+</article>
+<!-- GOLD -->
+<article aria-expanded="false" class="pricing-card featured" data-reveal="" role="button" tabindex="0">
+<div class="badge-featured">BELIEBT</div>
+<div class="pricing-core">
+<div class="pricing-head">
+<div class="pricing-titles">
+<div class="pricing-title">Gold</div>
+<div class="pricing-tagline">Wachstum &amp; Performance</div>
+</div>
+<div class="price">ca. € 1.800 / Monat</div>
+</div>
+<div aria-hidden="true" class="pricing-accent"></div>
+<div class="pricing-body" style="margin-top:12px">
+<p>Für skalierbares Wachstum mit Ads &amp; Community-Power.</p>
+</div>
+</div>
+<div class="pricing-expand">
+<ul class="features">
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>3 Social-Media-Kanäle</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>8–12 Postings / Monat inkl. Kurzvideos/Reels</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Community-Management (Kommentare &amp; DMs, Mo–Fr)</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Bezahlte Ads (Meta/TikTok) inkl. Kampagnen-Setup &amp; Optimierung</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Zweiwöchentliche Performance-Calls &amp; Detail-Reportings</span></li>
+</ul>
+</div>
+</article>
+<!-- PLATIN -->
+<article aria-expanded="false" class="pricing-card" data-reveal="" role="button" tabindex="0">
+<div class="pricing-core">
+<div class="pricing-head">
+<div class="pricing-titles">
+<div class="pricing-title">Platin</div>
+<div class="pricing-tagline">Rundum-Dominanz</div>
+</div>
+<div class="price">ca. € 3.500 / Monat</div>
+</div>
+<div aria-hidden="true" class="pricing-accent"></div>
+<div class="pricing-body" style="margin-top:12px">
+<p>Für maximale Sichtbarkeit &amp; Führung im Wettbewerb.</p>
+</div>
+</div>
+<div class="pricing-expand">
+<ul class="features">
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Alle relevanten Kanäle nach Bedarf (Instagram, TikTok, LinkedIn, YouTube Shorts …)</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Mind. 16 Postings / Monat + High-End-Videocontent</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Vollständiges Community- &amp; Krisen-Management</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Strategische Content-Workshops &amp; Trend-Scouting</span></li>
+<li><svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M20 6L9 17l-5-5" stroke="#7a3cff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Laufende A/B-Tests, Ad-Budget-Management &amp; monatliche Growth-Strategie</span></li>
+</ul>
+</div>
+</article>
+</div>
+<div data-reveal="" style="text-align:center;margin-top:24px">
+<a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+<a class="btn btn-ghost js-mail">Per Mail anfragen</a>
+</div>
+</div>
+</section>
+<!-- TEAM (neu gestaltet, Merve links / Chris rechts) -->
 
-  <!-- ======= CONTENT ======= -->
-  <main>
-    <!-- HERO -->
-    <section class="section">
-      <div class="container hero-wrap">
-        <div aria-hidden="true" class="hero-blob"></div>
-        <h1 class="h1" data-reveal>Hallo. Agentu hier. One-Agency-Army.</h1>
-        <p class="lead" data-reveal>Agentu macht dich relevant.</p>
-        <div style="margin-top:24px" data-reveal>
-          <a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- WARUM -->
-    <section class="section section-muted">
-      <div class="container">
-        <h2 class="h2" data-reveal>Warum Agentu und keine träge Riesen-Agentur?</h2>
-        <div class="grid3">
-          <article class="card" data-reveal>
-            <div class="card-body">
-              <div class="k-title">Geschwindigkeit</div>
-              <p class="k-desc">Entscheidungen in Sekunden, nicht in Quartalen.</p>
-            </div>
-          </article>
-          <article class="card" data-reveal>
-            <div class="card-body">
-              <div class="k-title">Nähe</div>
-              <p class="k-desc">Direkter Zugang zu den Machern statt Account-Schichten.</p>
-            </div>
-          </article>
-          <article class="card" data-reveal>
-            <div class="card-body">
-              <div class="k-title">Experimentier-Stärke</div>
-              <p class="k-desc">Tests &amp; Iteration statt PowerPoint-Theorie.</p>
-            </div>
-          </article>
-          <article class="card" data-reveal>
-            <div class="card-body">
-              <div class="k-title">KI-Adaption</div>
-              <p class="k-desc">Neue Tools produktiv nutzen, sobald sie erscheinen.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- METHODE -->
-    <section id="methode" class="section">
-      <div class="container">
-        <h2 class="h2" data-reveal>4 Schritte zur Relevanz</h2>
-        <p class="sub" data-reveal>You can just do things.</p>
-
-        <div class="method-wrap" id="methodWrap">
-          <div class="method-track" aria-hidden="true"></div>
-          <div class="steps">
-            <div class="step" data-reveal>
-              <div class="badge">1</div>
-              <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" stroke="#6B8E23" stroke-width="2"/>
-                <path d="M20 20l-3.2-3.2" stroke="#6B8E23" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              <div class="step-title">Audit</div>
-              <div class="step-desc">Status, Ziele, Quick-Wins — kein Blabla, nur Klarheit.</div>
-            </div>
-            <div class="step" data-reveal>
-              <div class="badge">2</div>
-              <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 18V6l8-2 8 2v12l-8 2-8-2Z" stroke="#6B8E23" stroke-width="2"/>
-                <path d="M8 12h8M8 9h8M8 15h5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              <div class="step-title">Plan</div>
-              <div class="step-desc">Fokus-Kanäle, Content-System, KPIs — umsetzbar statt hübsch.</div>
-            </div>
-            <div class="step" data-reveal>
-              <div class="badge">3</div>
-              <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2" stroke="#6B8E23" stroke-width="2"/>
-                <path d="M3 10h18" stroke="#6B8E23" stroke-width="2"/>
-                <circle cx="8" cy="8" r="1" fill="#6B8E23"/>
-                <circle cx="11" cy="8" r="1" fill="#6B8E23"/>
-                <circle cx="14" cy="8" r="1" fill="#6B8E23"/>
-              </svg>
-              <div class="step-title">Produktion</div>
-              <div class="step-desc">Creation & Distribution im Takt des Feeds.</div>
-            </div>
-            <div class="step" data-reveal>
-              <div class="badge">4</div>
-              <svg class="step-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3l2 6h6l-5 3.6L17 19l-5-3.4L7 19l2-6.4L4 9h6l2-6Z" stroke="#6B8E23" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-              <div class="step-title">Lernen</div>
-              <div class="step-desc">Reporting, A/B-Tests, Skalierung – stetig besser.</div>
-            </div>
+<section class="section" id="team">
+  <div class="container">
+    <h2 class="h2">Team</h2>
+    <div class="team-grid">
+      <!-- Merve -->
+      <article class="team-card">
+        <figure class="team-media" aria-label="9:16 Bildplatzhalter für Merve">
+          <span class="team-badge">9:16</span>
+          <img src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='360' height='640'><rect width='100%%' height='100%%' fill='%%23e9f0e5'/><text x='50%%' y='50%%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='24' fill='%%238aa16b'>Merve – Platzhalter</text></svg>" alt="Merve 9:16 Platzhalter" loading="lazy" decoding="async"/>
+        </figure>
+        <div class="team-body">
+          <h3>Merve – Viral Queen &amp; Trend-Radar</h3>
+          <div class="team-role">Reels, TikTok, Trend-Spotting</div>
+          <div class="team-pills">
+            <span class="team-pill">Instagram</span>
+            <span class="team-pill">TikTok</span>
+            <span class="team-pill">Shorts</span>
+            <span class="team-pill">UGC</span>
+            <span class="team-pill">Trend-Scanning</span>
+          </div>
+          <p class="team-bio">Master in Produktmarketing &amp; Innovationsmanagement. Hebt Kanäle über die 10k‑Marke, erkennt Trends, bevor sie auf der For‑You‑Page landen – und übersetzt sie in klar messbares Wachstum.</p>
+          <div class="team-meta">
+            <div class="m"><strong>Branchen</strong><span>Retail, Food, Beauty</span></div>
+            <div class="m"><strong>Best‑Hits</strong><span>1M+ Views / Reel</span></div>
+            <div class="m"><strong>Hebel</strong><span>Hook, Pace, Sound</span></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- LEISTUNGEN -->
-    <section id="leistungen" class="section section-muted">
-      <div class="container">
-        <h2 class="h2" data-reveal>Leistungen</h2>
-        <div class="grid3">
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Konzeptplanung</div>
-            <p class="k-desc">Klarer Fahrplan von Ziel bis KPI.</p>
-          </div></article>
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Contentplanung</div>
-            <p class="k-desc">Redaktionspläne, die verkaufen statt füllen.</p>
-          </div></article>
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Contenterstellung</div>
-            <p class="k-desc">Schlanke Produktion für Social-Tempo.</p>
-          </div></article>
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Community-Management</div>
-            <p class="k-desc">Antworten, die Beziehungen bauen.</p>
-          </div></article>
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Paid Social</div>
-            <p class="k-desc">Medienbudget effizienter in Wirkung verwandeln.</p>
-          </div></article>
-          <article class="card" data-reveal><div class="card-body">
-            <div class="k-title">Monitoring</div>
-            <p class="k-desc">Kennzahlen, Learnings, nächste beste Aktion.</p>
-          </div></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAKETE (Preis sichtbar + Expand mit Features) -->
-    <section id="pakete" class="section">
-      <div class="container">
-        <h2 class="h2" data-reveal>Pakete</h2>
-        <p class="lead" data-reveal>Agentu - mit alles & scharf?</p>
-
-        <div class="pricing-grid">
-          <!-- SILBER -->
-          <article class="pricing-card" role="button" tabindex="0" aria-expanded="false" data-reveal>
-            <div class="pricing-core">
-              <div class="pricing-head">
-                <div class="pricing-titles">
-                  <div class="pricing-title">Silber</div>
-                  <div class="pricing-tagline">solider Start</div>
-                </div>
-                <div class="price">ca. € 900 / Monat</div>
-              </div>
-              <div class="pricing-accent" aria-hidden="true"></div>
-              <div class="pricing-body" style="margin-top:12px">
-                <p>Für einen strukturierten Einstieg mit klaren Basics.</p>
-              </div>
-            </div>
-            <div class="pricing-expand">
-              <ul class="features">
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2 Social-Media-Kanäle (z. B. Instagram &amp; TikTok)</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4–6 Postings / Monat inkl. Bild-/Videobearbeitung</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basis-Content-Plan &amp; Redaktionskalender</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Monatliches Performance-Reporting</span></li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- GOLD -->
-          <article class="pricing-card featured" role="button" tabindex="0" aria-expanded="false" data-reveal>
-            <div class="badge-featured">BELIEBT</div>
-            <div class="pricing-core">
-              <div class="pricing-head">
-                <div class="pricing-titles">
-                  <div class="pricing-title">Gold</div>
-                  <div class="pricing-tagline">Wachstum &amp; Performance</div>
-                </div>
-                <div class="price">ca. € 1.800 / Monat</div>
-              </div>
-              <div class="pricing-accent" aria-hidden="true"></div>
-              <div class="pricing-body" style="margin-top:12px">
-                <p>Für skalierbares Wachstum mit Ads &amp; Community-Power.</p>
-              </div>
-            </div>
-            <div class="pricing-expand">
-              <ul class="features">
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>3 Social-Media-Kanäle</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>8–12 Postings / Monat inkl. Kurzvideos/Reels</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Community-Management (Kommentare &amp; DMs, Mo–Fr)</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bezahlte Ads (Meta/TikTok) inkl. Kampagnen-Setup &amp; Optimierung</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Zweiwöchentliche Performance-Calls &amp; Detail-Reportings</span></li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- PLATIN -->
-          <article class="pricing-card" role="button" tabindex="0" aria-expanded="false" data-reveal>
-            <div class="pricing-core">
-              <div class="pricing-head">
-                <div class="pricing-titles">
-                  <div class="pricing-title">Platin</div>
-                  <div class="pricing-tagline">Rundum-Dominanz</div>
-                </div>
-                <div class="price">ca. € 3.500 / Monat</div>
-              </div>
-              <div class="pricing-accent" aria-hidden="true"></div>
-              <div class="pricing-body" style="margin-top:12px">
-                <p>Für maximale Sichtbarkeit &amp; Führung im Wettbewerb.</p>
-              </div>
-            </div>
-            <div class="pricing-expand">
-              <ul class="features">
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alle relevanten Kanäle nach Bedarf (Instagram, TikTok, LinkedIn, YouTube Shorts …)</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mind. 16 Postings / Monat + High-End-Videocontent</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vollständiges Community- &amp; Krisen-Management</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Strategische Content-Workshops &amp; Trend-Scouting</span></li>
-                <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 6L9 17l-5-5" stroke="#6B8E23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Laufende A/B-Tests, Ad-Budget-Management &amp; monatliche Growth-Strategie</span></li>
-              </ul>
-            </div>
-          </article>
-        </div>
-
-        <div style="text-align:center;margin-top:24px" data-reveal>
-          <a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TEAM (neu gestaltet, Merve links / Chris rechts) -->
-    <section id="team" class="section">
-      <div class="container">
-        <h2 class="h2" data-reveal>Team</h2>
-        <div class="grid2">
-          <!-- Merve (links) -->
-          <article class="card profile-card" data-reveal>
-            <div class="card-body">
-              <div class="profile-head">
-                <div class="profile-avatar" aria-hidden="true">M</div>
-                <div>
-                  <h3 class="profile-title">Merve – Viral Queen &amp; Trend-Radar</h3>
-                  <div class="profile-underline" aria-hidden="true"></div>
-                </div>
-              </div>
-
-              <div class="profile-pills">
-                <span class="pill">Instagram</span>
-                <span class="pill">TikTok</span>
-                <span class="pill">Reels</span>
-                <span class="pill">Trend-Scouting</span>
-              </div>
-
-              <div class="profile-quick">
-                <div class="quick"><strong>10k+</strong><span>Follower-Kanäle</span></div>
-                <div class="quick"><strong>Mio.+</strong><span>Views</span></div>
-                <div class="quick"><strong>Creator-Speed</strong><span>statt PowerPoint</span></div>
-              </div>
-
-              <p class="profile-bio">
-                Master in Produktmarketing &amp; Innovationsmanagement. Jahrelang in großen Marketingteams gewirbelt –
-                heute baut sie Content, der auf der <em>For You-Page</em> landet, nicht im Archiv.
-              </p>
-            </div>
-          </article>
-
-          <!-- Chris (rechts) -->
-          <article class="card profile-card" data-reveal>
-            <div class="card-body">
-              <div class="profile-head">
-                <div class="profile-avatar" aria-hidden="true">C</div>
-                <div>
-                  <h3 class="profile-title">Chris – Strategie-Taktiker &amp; Speed-Denker</h3>
-                  <div class="profile-underline" aria-hidden="true"></div>
-                </div>
-              </div>
-
-              <div class="profile-pills">
-                <span class="pill">Strategie</span>
-                <span class="pill">Growth</span>
-                <span class="pill">Lean Teams</span>
-                <span class="pill">Execution</span>
-              </div>
-
-              <div class="profile-quick">
-                <div class="quick"><strong>Gesundheitswesen</strong><span>Social &amp; Web aufgebaut</span></div>
-                <div class="quick"><strong>Enterprise</strong><span>Agenturen koordiniert</span></div>
-                <div class="quick"><strong>Speed</strong><span>Lean &gt; Strukturen</span></div>
-              </div>
-
-              <p class="profile-bio">
-                Master in Produktmarketing &amp; Innovationsmanagement. Erkenntnis aus Corporate-Praxis:
-                <em>Kleine Teams schlagen träge Strukturen</em> – besonders, wenn der Markt in Lichtgeschwindigkeit dreht.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="cta" class="section">
-      <div class="container" style="text-align:center">
-        <h2 class="h2" data-reveal>Wir sind ready, wenn du ready bist.</h2>
-        <p class="lead" data-reveal>Social-Growth ohne Ballast.</p>
-        <div style="margin-top:24px" data-reveal>
-          <a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
-          <a class="btn btn-ghost js-mail">Per Mail anfragen</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMPRESSUM / DATENSCHUTZ -->
-    <section id="impressum" class="section section-muted">
-      <div class="container">
-        <h2 class="h2" data-reveal>Impressum</h2>
-        <p class="p" data-reveal><em>Blank-Version. Bitte Angaben ergänzen: Unternehmensname, Adresse, Kontakt, UID/Firmenbuch, Geschäftsführung, Behörde.</em></p>
-      </div>
-    </section>
-    <section id="datenschutz" class="section">
-      <div class="container">
-        <h2 class="h2" data-reveal>Datenschutzerklärung</h2>
-        <p class="p" data-reveal>Wir verarbeiten personenbezogene Daten ausschließlich zur Beantwortung Ihrer Kontaktanfragen (E-Mail / WhatsApp). Es findet kein analytisches Tracking statt. Bei Nutzung von WhatsApp gelten zusätzlich die Bedingungen von WhatsApp/Meta.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>
-        <div style="color:var(--olive-900);font-weight:800">Agentu</div>
-        <div>Wien, Österreich, DACH.</div>
-      </div>
-      <div style="display:flex;gap:16px">
-        <a href="#impressum">Impressum</a>
-        <a href="#datenschutz">Datenschutz</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ======= Cookie Hinweis ======= -->
-  <div id="cookie" class="cookie" hidden>
-    <div class="container">
-      <div class="box" style="margin:0 auto 24px;max-width:1120px;border:1px solid var(--olive-200);border-radius:16px;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.08);padding:16px">
-        <div class="row" style="display:flex;flex-direction:column;gap:12px">
-          <p class="p" style="margin:0;flex:1">Wir verwenden nur essenzielle Cookies für den Betrieb dieser Website. Analytics ist derzeit <strong>deaktiviert</strong>.</p>
-          <div style="display:flex;gap:8px">
-            <button id="cookieAccept" class="btn btn-primary">Einverstanden</button>
-            <a href="#datenschutz" class="btn btn-ghost">Details</a>
+      </article>
+      <!-- Chris -->
+      <article class="team-card">
+        <figure class="team-media" aria-label="9:16 Bildplatzhalter für Chris">
+          <span class="team-badge">9:16</span>
+          <img src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='360' height='640'><rect width='100%%' height='100%%' fill='%%23e9f0e5'/><text x='50%%' y='50%%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='24' fill='%%238aa16b'>Chris – Platzhalter</text></svg>" alt="Chris 9:16 Platzhalter" loading="lazy" decoding="async"/>
+        </figure>
+        <div class="team-body">
+          <h3>Chris – Strategie‑Taktiker &amp; Speed‑Denker</h3>
+          <div class="team-role">Strategie, Content‑Systeme, Growth</div>
+          <div class="team-pills">
+            <span class="team-pill">Strategie</span>
+            <span class="team-pill">Growth</span>
+            <span class="team-pill">Lean Teams</span>
+            <span class="team-pill">Execution</span>
+            <span class="team-pill">Analytics</span>
+          </div>
+          <p class="team-bio">Enterprise‑Erfahrung ohne Enterprise‑Trägheit. Baut schlanke Content‑Maschinen, priorisiert Speed &gt; Perfektion – mit klaren KPIs und sauberem Reporting.</p>
+          <div class="team-meta">
+            <div class="m"><strong>Use‑Cases</strong><span>Launch, Turnaround, Always‑On</span></div>
+            <div class="m"><strong>Stack</strong><span>Meta, TikTok, GA4, Sheets</span></div>
+            <div class="m"><strong>Prinzip</strong><span>Done → Measured → Iterated</span></div>
           </div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
+</section>
 
-  <script>
+<!-- CTA -->
+<section class="section" id="cta">
+<div class="container" style="text-align:center">
+<h2 class="h2" data-reveal="">Wir sind ready, wenn du ready bist.</h2>
+<p class="lead" data-reveal="">Social-Growth ohne Ballast.</p>
+<div data-reveal="" style="margin-top:24px">
+<a class="btn btn-primary js-wa" style="margin-right:8px">Per WhatsApp anfragen</a>
+<a class="btn btn-ghost js-mail">Per Mail anfragen</a>
+</div>
+</div>
+</section>
+<!-- IMPRESSUM / DATENSCHUTZ -->
+<section class="section section-muted" id="impressum">
+<div class="container">
+<h2 class="h2" data-reveal="">Impressum</h2>
+<p class="p" data-reveal=""><em>Blank-Version. Bitte Angaben ergänzen: Unternehmensname, Adresse, Kontakt, UID/Firmenbuch, Geschäftsführung, Behörde.</em></p>
+</div>
+</section>
+<section class="section" id="datenschutz">
+<div class="container">
+<h2 class="h2" data-reveal="">Datenschutzerklärung</h2>
+<p class="p" data-reveal="">Wir verarbeiten personenbezogene Daten ausschließlich zur Beantwortung Ihrer Kontaktanfragen (E-Mail / WhatsApp). Es findet kein analytisches Tracking statt. Bei Nutzung von WhatsApp gelten zusätzlich die Bedingungen von WhatsApp/Meta.</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-inner">
+<div>
+<div style="color:var(--olive-900);font-weight:800">Agentu</div>
+<div>Wien, Österreich, DACH.</div>
+</div>
+<div style="display:flex;gap:16px">
+<a href="#impressum">Impressum</a>
+<a href="#datenschutz">Datenschutz</a>
+</div>
+</div>
+</footer>
+<!-- ======= Cookie Hinweis ======= -->
+<div class="cookie" hidden="" id="cookie">
+<div class="container">
+<div class="box" style="margin:0 auto 24px;max-width:1120px;border:1px solid var(--olive-200);border-radius:16px;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.08);padding:16px">
+<div class="row" style="display:flex;flex-direction:column;gap:12px">
+<p class="p" style="margin:0;flex:1">Wir verwenden nur essenzielle Cookies für den Betrieb dieser Website. Analytics ist derzeit <strong>deaktiviert</strong>.</p>
+<div style="display:flex;gap:8px">
+<button class="btn btn-primary" id="cookieAccept">Einverstanden</button>
+<a class="btn btn-ghost" href="#datenschutz">Details</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
     /* ==== KONFIGURATION ==== */
     const WHATSAPP_NUMBER = "+436604240704";
     const DEFAULT_WA_TEXT = "Hallo Agentu, ich interessiere mich für Social-Media-Unterstützung.";
@@ -672,5 +892,74 @@
       });
     });
   </script>
-</body>
+<div aria-hidden="true" class="modal-scrim" id="serviceModal" role="dialog"><div class="modal" role="document"><div class="modal-header"><div class="modal-title">Leistung</div><button aria-label="Schließen" class="modal-close" type="button">Schließen</button></div><div class="modal-body"><div class="modal-placeholder">Hier kannst du später deinen Text einfügen.</div></div></div></div><script>
+(function(){
+  const $$ = (sel, root=document)=>Array.from(root.querySelectorAll(sel));
+
+  // Mark Leistungen cards as interactive and wire modals
+  const leistSect = document.getElementById('leistungen');
+  if(leistSect){
+    const cards = $$('.grid3 > .card, .grid3 > article.card', leistSect);
+    cards.forEach((card, idx)=>{
+      card.classList.add('service');
+      card.setAttribute('role','button');
+      card.setAttribute('tabindex','0');
+      card.dataset.serviceTitle = (card.querySelector('.k-title')?.textContent || 'Leistung');
+      const open = ()=>openModal(card.dataset.serviceTitle);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(); }});
+    });
+  }
+
+  const scrim = document.getElementById('serviceModal');
+  const mdl = scrim?.querySelector('.modal');
+  const titleEl = scrim?.querySelector('.modal-title');
+  const closeBtn = scrim?.querySelector('.modal-close');
+
+  function openModal(title){
+    if(!scrim) return;
+    titleEl.textContent = title || 'Leistung';
+    scrim.classList.add('active');
+    scrim.setAttribute('aria-hidden','false');
+    // trap focus
+    closeBtn?.focus();
+  }
+  function closeModal(){
+    scrim?.classList.remove('active');
+    scrim?.setAttribute('aria-hidden','true');
+  }
+  closeBtn?.addEventListener('click', closeModal);
+  scrim?.addEventListener('click', (e)=>{ if(e.target===scrim) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+  // Warum-Agentu flip with back video placeholders
+  const warumH2 = [...$$('h2')].find(h=>/Warum Agentu/i.test(h.textContent||''));
+  if(warumH2){
+    const wrap = warumH2.parentElement?.querySelector('.grid3');
+    if(wrap){
+      $$('.card', wrap).forEach((card)=>{
+        if(card.classList.contains('flippable')) return;
+        const body = card.querySelector('.card-body');
+        if(!body) return;
+        card.classList.add('flippable');
+        const inner = document.createElement('div');
+        inner.className = 'flip-inner';
+        const front = document.createElement('div'); front.className='flip-face flip-front';
+        const back = document.createElement('div'); back.className='flip-face flip-back';
+        // move existing content into front
+        front.appendChild(body);
+        // create back content
+        back.innerHTML = '<div class="video-holder"><div class="placeholder">Kurzvideo hier einfügen (720×1280 mp4/webm).<br>Auf dem Handy per Tipp umdrehen.</div></div>';
+        // build
+        inner.appendChild(front); inner.appendChild(back);
+        card.appendChild(inner);
+        // touch toggle for mobile
+        card.addEventListener('click', ()=>{
+          card.classList.toggle('is-flipped');
+        });
+      });
+    }
+  }
+})();
+</script></body>
 </html>
