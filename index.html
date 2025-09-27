@@ -507,6 +507,27 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
 }
 
 </style>
+<style>
+
+/* === Override: 2x2 grid for Warum-section (desktop) === */
+.section.section-muted .container > .grid3{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:20px;
+}
+@media (max-width: 720px){
+  .section.section-muted .container > .grid3{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure front defines height; back overlays; video covers fully */
+.card.flippable{position:relative}
+.card.flippable .flip-back{position:absolute; inset:0; display:flex}
+.card.flippable .flip-front{position:relative}
+.card.flippable .flip-back video{width:100%; height:100%; object-fit:cover}
+
+</style>
 </head>
 <body>
 <!-- ======= NAV ======= -->
@@ -566,32 +587,66 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
 <section class="section section-muted">
 <div class="container">
 <h2 class="h2" data-reveal="">Warum Agentu und keine träge Riesen-Agentur?</h2>
-<div class="grid3">
-<article class="card" data-reveal="">
-<div class="card-body">
+<div class="grid3"><article class="card flippable" data-reveal="">
+  <div class="flip-inner">
+    <div class="flip-face flip-front">
+      <div class="card-body">
 <div class="k-title">Geschwindigkeit</div>
 <p class="k-desc">Entscheidungen in Sekunden, nicht in Quartalen.</p>
 </div>
+    </div>
+    <div class="flip-face flip-back">
+      <div class="video-holder">
+        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+      </div>
+    </div>
+  </div>
 </article>
-<article class="card" data-reveal="">
-<div class="card-body">
+<article class="card flippable" data-reveal="">
+  <div class="flip-inner">
+    <div class="flip-face flip-front">
+      <div class="card-body">
 <div class="k-title">Nähe</div>
 <p class="k-desc">Direkter Zugang zu den Machern statt Account-Schichten.</p>
 </div>
+    </div>
+    <div class="flip-face flip-back">
+      <div class="video-holder">
+        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+      </div>
+    </div>
+  </div>
 </article>
-<article class="card" data-reveal="">
-<div class="card-body">
+<article class="card flippable" data-reveal="">
+  <div class="flip-inner">
+    <div class="flip-face flip-front">
+      <div class="card-body">
 <div class="k-title">Experimentier-Stärke</div>
 <p class="k-desc">Tests &amp; Iteration statt PowerPoint-Theorie.</p>
 </div>
+    </div>
+    <div class="flip-face flip-back">
+      <div class="video-holder">
+        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+      </div>
+    </div>
+  </div>
 </article>
-<article class="card" data-reveal="">
-<div class="card-body">
+<article class="card flippable" data-reveal="">
+  <div class="flip-inner">
+    <div class="flip-face flip-front">
+      <div class="card-body">
 <div class="k-title">KI-Adaption</div>
 <p class="k-desc">Neue Tools produktiv nutzen, sobald sie erscheinen.</p>
 </div>
-</article>
-</div>
+    </div>
+    <div class="flip-face flip-back">
+      <div class="video-holder">
+        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+      </div>
+    </div>
+  </div>
+</article></div>
 </div>
 </section>
 <!-- METHODE -->
@@ -1067,5 +1122,18 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
     }
   }
 })();
-</script></body>
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.card.flippable').forEach(function(card){
+    card.addEventListener('click', function(e){
+      // ignore clicks on links/buttons inside the card
+      if (e.target.closest('a,button')) return;
+      card.classList.toggle('is-flipped');
+    }, {passive:true});
+  });
+});
+</script>
+
+</body>
 </html>
