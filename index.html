@@ -597,7 +597,7 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
     </div>
     <div class="flip-face flip-back">
       <div class="video-holder">
-        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+        <video src="/videos/geschwindigkeit.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
       </div>
     </div>
   </div>
@@ -612,7 +612,7 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
     </div>
     <div class="flip-face flip-back">
       <div class="video-holder">
-        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+        <video src="/videos/geschwindigkeit.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
       </div>
     </div>
   </div>
@@ -627,7 +627,7 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
     </div>
     <div class="flip-face flip-back">
       <div class="video-holder">
-        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+        <video src="/videos/geschwindigkeit.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
       </div>
     </div>
   </div>
@@ -642,7 +642,7 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
     </div>
     <div class="flip-face flip-back">
       <div class="video-holder">
-        <video src="2759477-uhd_3840_2160_30fps.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
+        <video src="/videos/geschwindigkeit.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kachel-Video"></video>
       </div>
     </div>
   </div>
@@ -1123,14 +1123,33 @@ svg [fill="#7a3cff"]{fill:var(--olive-300)!important}
   }
 })();
 </script>
+
+
+
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.card.flippable').forEach(function(card){
-    card.addEventListener('click', function(e){
-      // ignore clicks on links/buttons inside the card
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card.flippable').forEach(card => {
+    const video = card.querySelector('video');
+    if (!video) return;
+    // Safety for autoplay policies
+    video.muted = true;
+    // Desktop hover: play on enter, pause on leave
+    card.addEventListener('mouseenter', () => {
+      if (video.paused) { video.play().catch(() => {}); }
+    });
+    card.addEventListener('mouseleave', () => {
+      if (!card.classList.contains('is-flipped')) { video.pause(); }
+    });
+    // Mobile/Click flip: toggle and manage playback
+    card.addEventListener('click', (e) => {
       if (e.target.closest('a,button')) return;
       card.classList.toggle('is-flipped');
-    }, {passive:true});
+      if (card.classList.contains('is-flipped')) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }, { passive: true });
   });
 });
 </script>
